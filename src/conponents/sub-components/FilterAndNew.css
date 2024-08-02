@@ -1,0 +1,45 @@
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #f8f8fb; /* Change background color if needed */
+  padding-right: 12px; /* Adjust padding to create space for the arrow */
+  font-size: 15px; /* Adjust font size */
+  font-weight: bold; /* Adjust font weight */
+  color: #0c0e16; /* Adjust text color */
+  position: relative; /* Ensure proper positioning */
+  /* Position arrow with 12px gap */
+  border: 0; /* Remove border */
+  outline: none; /* Remove outline when focused */
+}
+
+.custom-select:focus {
+  border: none; /* Ensure no border on focus */
+  box-shadow: none; /* Remove any box shadow */
+}
+
+.custom-select::-ms-expand {
+  display: none; /* Hide default arrow in IE */
+}
+
+.custom-select option {
+  background-color: #f8f8fb; /* Background color for options */
+  color: #0c0e16; /* Text color for options */
+  font-weight: 700; /* Font weight for options */
+  font-size: 15px; /* Font size for options */
+  border: none; /* Ensure no border in options */
+}
+
+.custom-select:focus-visible {
+  border: none; /* Remove any border when focused */
+  outline: none; /* Remove any outline when focused */
+}
+
+.custom-select::-webkit-inner-spin-button,
+.custom-select::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Remove spin buttons in WebKit browsers */
+}
+
+.custom-select::-webkit-select-button {
+  display: none; /* Remove default arrow button */
+}
