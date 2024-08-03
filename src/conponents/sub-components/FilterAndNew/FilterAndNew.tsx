@@ -30,7 +30,7 @@ function FilterAndNew() {
             <path
               d="M1 1L5.2279 5.2279L9.4558 1"
               stroke="#7C5DFA"
-              stroke-width="2"
+              strokeWidth="2"
             />
           </svg>
         </div>

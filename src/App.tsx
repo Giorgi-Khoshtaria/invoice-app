@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./conponents/layout/Layout";
 import Content from "./conponents/Pages/Content";
+import InvoiceProvider from "./contexts/InvoiceAppContect";
 function App() {
   const router = createBrowserRouter([
     {
@@ -9,7 +10,11 @@ function App() {
       children: [{ path: "/", element: <Content /> }],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <InvoiceProvider>
+      <RouterProvider router={router} />
+    </InvoiceProvider>
+  );
 }
 
 export default App;
