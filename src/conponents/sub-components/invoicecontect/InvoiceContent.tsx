@@ -1,5 +1,6 @@
 // InvoiceContent.tsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface InvoiceContentProps {
   id: string;
@@ -68,9 +69,16 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
         return "text-gray-500";
     }
   };
+  const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate(`/invoice/${id}`);
+  };
   return (
-    <div className="w-full flex items-center flex-col bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4">
+    <div
+      onClick={handleClick}
+      className="w-full flex items-center flex-col bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4"
+    >
       <div className="w-full flex items-center justify-between mb-6">
         <p className="text-ube text-[15px] font-bold tracking-[-0.25px]">
           # <span className="text-chineesBlack">{id}</span>

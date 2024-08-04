@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      borderRadius: {
+        "custom-br": "0px 0px 8px 8px",
+      },
       colors: {
         independence: "#494E6E",
         charcoal: "#373B53",
