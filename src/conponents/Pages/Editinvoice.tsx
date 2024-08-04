@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useInvoice } from "../../contexts/InvoiceAppContext";
+import delate from "/assets/icon-delete.svg";
 
 interface Address {
   street: string;
@@ -77,12 +78,53 @@ const EditInvoice: React.FC = () => {
     value: string | number
   ) => {
     if (formData) {
-      const updatedItems = formData.items.map((item, i) =>
-        i === index ? { ...item, [field]: value } : item
-      );
+      const updatedItems = formData.items.map((item, i) => {
+        if (i === index) {
+          const updatedItem = {
+            ...item,
+            [field]:
+              field === "quantity" || field === "price" ? Number(value) : value,
+          };
+
+          // Recalculate total for the item
+          if (field === "quantity" || field === "price") {
+            updatedItem.total =
+              (updatedItem.quantity || 0) * (updatedItem.price || 0);
+          }
+
+          return updatedItem;
+        }
+        return item;
+      });
+
       setFormData((prevState) => ({
         ...prevState!,
         items: updatedItems,
+      }));
+    }
+  };
+
+  const handleDeleteItem = (index: number) => {
+    if (formData) {
+      const updatedItems = formData.items.filter((_, i) => i !== index);
+      setFormData((prevState) => ({
+        ...prevState!,
+        items: updatedItems,
+      }));
+    }
+  };
+  const handleAddItem = () => {
+    if (formData) {
+      const newItem: Item = {
+        name: "",
+        quantity: 0,
+        price: 0,
+        total: 0, // Initialize total
+      };
+
+      setFormData((prevState) => ({
+        ...prevState!,
+        items: [...prevState!.items, newItem],
       }));
     }
   };
@@ -313,8 +355,13 @@ const EditInvoice: React.FC = () => {
                   type="number"
                   name="quantity"
                   value={item.quantity}
-                  onChange={(e) =>
-                    handleItemChange(index, "quantity", Number(e.target.value))
+                  onChange={
+                    (e) =>
+                      handleItemChange(
+                        index,
+                        "quantity",
+                        e.target.valueAsNumber
+                      ) // Use valueAsNumber for numeric inputs
                   }
                   className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
@@ -327,32 +374,51 @@ const EditInvoice: React.FC = () => {
                   type="number"
                   name="price"
                   value={item.price}
-                  onChange={(e) =>
-                    handleItemChange(index, "price", Number(e.target.value))
+                  onChange={
+                    (e) =>
+                      handleItemChange(index, "price", e.target.valueAsNumber) // Use valueAsNumber for numeric inputs
                   }
                   className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col items-start gap-[30px]">
                 <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                   Total
                 </label>
-                <p>{item.total}</p>
+                <p className="text-gray text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+                  {item.total}
+                </p>
+              </div>
+              <div
+                className="w-[12.444px] h-4 shrink-0 cursor-pointer"
+                onClick={() => handleDeleteItem(index)}
+              >
+                <img src={delate} alt="Delete item" />
               </div>
             </div>
           </div>
         ))}
-
-        <div className="flex justify-end mt-6">
-          <button
-            type="button"
-            onClick={handleSave}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm"
-          >
-            Save Changes
-          </button>
+        <div
+          className="flex items-center justify-center my-[50px] cursor-pointer"
+          onClick={handleAddItem}
+        >
+          <p className="text-ube text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+            + Add New Item
+          </p>
         </div>
       </form>
+      <div className="flex justify-end mt-6 bg-white p-5">
+        <button className="pt-[18px] pr-[26px] pb-[15px] pl-26px bg-[#F9FAFE]">
+          Cancel
+        </button>
+        <button
+          type="button"
+          onClick={handleSave}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm"
+        >
+          Save Changes
+        </button>
+      </div>
     </div>
   );
 };
