@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useInvoice } from "../../contexts/InvoiceAppContect";
+import { useInvoice } from "../../contexts/InvoiceAppContext";
 import arrowleft from "/assets/icon-arrow-left.svg";
+import { Link } from "react-router-dom";
 
 function IvoicePage() {
   const formatDate = (dateString: string) => {
@@ -201,15 +202,18 @@ function IvoicePage() {
         </div>
       </div>
       <div className=" mt-14 flex items-center justify-between p-6 bg-white">
-        <button className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
+        <Link
+          to={`/invoice/${id}/edit`}
+          className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+        >
           Edit
-        </button>
-        <button className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
+        </Link>
+        <Link className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
           Delete
-        </button>
-        <button className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
+        </Link>
+        <Link className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
           Mark as Paid
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import FilterAndNew from "../sub-components/FilterAndNew/FilterAndNew";
 import ClearContent from "../sub-components/ClearContent.tsx/ClearContent";
 import InvoiceContent from "../sub-components/invoicecontect/InvoiceContent";
-import { useInvoice } from "../../contexts/InvoiceAppContect";
+import { useInvoice } from "../../contexts/InvoiceAppContext";
 
 const Content: React.FC = () => {
   const { invoices, filterStatus } = useInvoice();

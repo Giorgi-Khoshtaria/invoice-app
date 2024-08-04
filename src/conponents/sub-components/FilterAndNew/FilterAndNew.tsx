@@ -1,7 +1,7 @@
 import React from "react";
 import "./FilterAndNew.css";
 import { useState } from "react";
-import { useInvoice } from "../../../contexts/InvoiceAppContect"; // Import the CSS file
+import { useInvoice } from "../../../contexts/InvoiceAppContext"; // Import the CSS file
 
 function FilterAndNew() {
   const { setFilterStatus, invoices } = useInvoice();
