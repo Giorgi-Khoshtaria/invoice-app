@@ -1,7 +1,17 @@
 import React from "react";
-import "./FilterAndNew.css"; // Import the CSS file
+import "./FilterAndNew.css";
+import { useState } from "react";
+import { useInvoice } from "../../../contexts/InvoiceAppContect"; // Import the CSS file
 
 function FilterAndNew() {
+  const { setFilterStatus } = useInvoice();
+  const [selectedStatus, setSelectedStatus] = useState("all");
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newStatus = event.target.value;
+    setSelectedStatus(newStatus);
+    setFilterStatus(newStatus);
+  };
   return (
     <div className="flex items-center justify-between mt-9">
       <div>
@@ -14,10 +24,14 @@ function FilterAndNew() {
       </div>
       <div className="flex items-center gap-[18px] ">
         <div className="flex items-center justify-end ">
-          <select className="custom-select text-chineesBlack text-[15px] font-bold tracking-tight focus:outline-none">
-            <option value="Filter">Filter</option>
+          <select
+            className="custom-select text-chineesBlack text-[15px] font-bold tracking-tight focus:outline-none"
+            value={selectedStatus}
+            onChange={handleFilterChange}
+          >
+            <option value="all">Filter</option>
             <option value="paid">Paid</option>
-            <option value="Pendding">Pendding</option>
+            <option value="pending">Pending</option>
             <option value="draft">Draft</option>
           </select>
           <svg
