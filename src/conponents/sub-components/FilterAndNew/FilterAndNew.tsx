@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useInvoice } from "../../../contexts/InvoiceAppContect"; // Import the CSS file
 
 function FilterAndNew() {
-  const { setFilterStatus } = useInvoice();
+  const { setFilterStatus, invoices } = useInvoice();
   const [selectedStatus, setSelectedStatus] = useState("all");
-
+  const inv = invoices.length;
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = event.target.value;
     setSelectedStatus(newStatus);
@@ -19,7 +19,7 @@ function FilterAndNew() {
           Invoices
         </h2>
         <p className="text-gray font-medium leading-[15px] tracking-[-0.1px] text-[13px]">
-          No invoices
+          {inv === 0 ? "No invoices" : `${inv} invoices`}
         </p>
       </div>
       <div className="flex items-center gap-[18px] ">
