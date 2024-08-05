@@ -5,8 +5,8 @@ import React, {
   useContext,
   useEffect,
 } from "react";
-import data from "../data.json";
 import { Invoice } from "./types";
+import initialData from "../data.json";
 
 interface InvoiceContextProps {
   invoices: Invoice[];
@@ -14,6 +14,8 @@ interface InvoiceContextProps {
   filterStatus: string;
   setFilterStatus: React.Dispatch<React.SetStateAction<string>>;
   updateInvoice: (updatedInvoice: Invoice) => void;
+  deleteInvoice: (id: string) => void;
+  markAsPaid: (id: string) => void;
 }
 
 export const InvoiceContext = createContext<InvoiceContextProps>({
@@ -22,6 +24,8 @@ export const InvoiceContext = createContext<InvoiceContextProps>({
   filterStatus: "all",
   setFilterStatus: () => {},
   updateInvoice: () => {},
+  deleteInvoice: () => {},
+  markAsPaid: () => {},
 });
 
 interface InvoiceProviderProps {
@@ -31,8 +35,8 @@ interface InvoiceProviderProps {
 const localStorageKey = "invoices";
 
 const loadInvoices = (): Invoice[] => {
-  const invoices = localStorage.getItem(localStorageKey);
-  return invoices ? JSON.parse(invoices) : data;
+  const storedInvoices = localStorage.getItem(localStorageKey);
+  return storedInvoices ? JSON.parse(storedInvoices) : initialData;
 };
 
 const saveInvoices = (invoices: Invoice[]) => {
@@ -40,7 +44,7 @@ const saveInvoices = (invoices: Invoice[]) => {
 };
 
 const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) => {
-  const [invoices, setInvoices] = useState<Invoice[]>(loadInvoices());
+  const [invoices, setInvoices] = useState<Invoice[]>(loadInvoices);
   const [filterStatus, setFilterStatus] = useState<string>("all");
 
   useEffect(() => {
@@ -55,6 +59,20 @@ const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) => {
     );
   };
 
+  const deleteInvoice = (id: string) => {
+    setInvoices((prevInvoices) =>
+      prevInvoices.filter((invoice) => invoice.id !== id)
+    );
+  };
+
+  const markAsPaid = (id: string) => {
+    setInvoices((prevInvoices) =>
+      prevInvoices.map((invoice) =>
+        invoice.id === id ? { ...invoice, status: "paid" } : invoice
+      )
+    );
+  };
+
   return (
     <InvoiceContext.Provider
       value={{
@@ -63,6 +81,8 @@ const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) => {
         filterStatus,
         setFilterStatus,
         updateInvoice,
+        deleteInvoice,
+        markAsPaid,
       }}
     >
       {children}

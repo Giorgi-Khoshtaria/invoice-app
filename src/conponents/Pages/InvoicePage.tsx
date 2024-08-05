@@ -1,9 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useInvoice } from "../../contexts/InvoiceAppContext";
 import arrowleft from "/assets/icon-arrow-left.svg";
 import { Link } from "react-router-dom";
 
-function IvoicePage() {
+function InvoicePage() {
+  const navigate = useNavigate();
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = {
@@ -21,7 +23,7 @@ function IvoicePage() {
       case "pending":
         return "bg-yellow-500 bg-opacity-10";
       case "draft":
-        return "bg-[rgba(55,59,83,0.0571)]"; // Custom background color for draft status
+        return "bg-[rgba(55,59,83,0.0571)]";
       default:
         return "bg-gray-500 bg-opacity-10";
     }
@@ -34,7 +36,7 @@ function IvoicePage() {
       case "pending":
         return "bg-yellow-500";
       case "draft":
-        return "bg-[#373B53]"; // Custom dot color for draft status
+        return "bg-[#373B53]";
       default:
         return "bg-gray-500";
     }
@@ -47,19 +49,31 @@ function IvoicePage() {
       case "pending":
         return "text-yellow-500";
       case "draft":
-        return "text-[#373B53]"; // Custom text color for draft status
+        return "text-[#373B53]";
       default:
         return "text-gray-500";
     }
   };
+
   const { id } = useParams<{ id: string }>();
-  const { invoices } = useInvoice();
+  const { invoices, deleteInvoice, markAsPaid } = useInvoice();
 
   const invoice = invoices.find((inv) => inv.id === id);
 
   if (!invoice) {
     return <div>Invoice not found</div>;
   }
+
+  const handleDelete = () => {
+    deleteInvoice(id);
+    navigate("/"); // Redirect to the home page after deletion
+  };
+
+  const handleMarkAsPaid = () => {
+    markAsPaid(id);
+    navigate("/");
+  };
+
   return (
     <div>
       <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6">
@@ -208,15 +222,21 @@ function IvoicePage() {
         >
           Edit
         </Link>
-        <Link className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
+        <button
+          onClick={handleDelete}
+          className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+        >
           Delete
-        </Link>
-        <Link className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
+        </button>
+        <button
+          onClick={handleMarkAsPaid}
+          className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+        >
           Mark as Paid
-        </Link>
+        </button>
       </div>
     </div>
   );
 }
 
-export default IvoicePage;
+export default InvoicePage;

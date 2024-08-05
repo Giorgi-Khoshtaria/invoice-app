@@ -163,8 +163,8 @@ const EditInvoice: React.FC = () => {
             </label>
             <input
               type="text"
-              name="clientName"
-              value={formData.clientAddress.street}
+              name="senderAddress"
+              value={formData.senderAddress.street}
               onChange={handleChange}
               className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
             />
@@ -175,9 +175,9 @@ const EditInvoice: React.FC = () => {
                 City
               </label>
               <input
-                type="email"
-                name="clientEmail"
-                value={formData.senderAddress.street}
+                type="text"
+                name="senderAddress"
+                value={formData.senderAddress.city}
                 onChange={handleChange}
                 className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
@@ -199,13 +199,13 @@ const EditInvoice: React.FC = () => {
 
           <div className="mb-4">
             <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-              Client City
+              Country
             </label>
             <input
               type="text"
-              name="city"
-              value={formData.senderAddress.city}
-              onChange={(e) => handleAddressChange(e, "clientAddress")}
+              name=" senderAddress"
+              value={formData.senderAddress.country}
+              onChange={(e) => handleAddressChange(e, "senderAddress")}
               className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
             />
           </div>
@@ -220,9 +220,9 @@ const EditInvoice: React.FC = () => {
             </label>
             <input
               type="text"
-              name="postCode"
+              name="clientName"
               value={formData.clientName}
-              onChange={(e) => handleAddressChange(e, "clientAddress")}
+              onChange={handleChange}
               className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
             />
           </div>
@@ -232,9 +232,9 @@ const EditInvoice: React.FC = () => {
             </label>
             <input
               type="text"
-              name="country"
-              value={formData.clientAddress.country}
-              onChange={(e) => handleAddressChange(e, "clientAddress")}
+              name="clientEmail"
+              value={formData.clientEmail}
+              onChange={handleChange}
               className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
             />
           </div>
@@ -257,10 +257,10 @@ const EditInvoice: React.FC = () => {
                   City
                 </label>
                 <input
-                  type="email"
-                  name="clientEmail"
+                  type="text"
+                  name="clientAddress"
                   value={formData.clientAddress.city}
-                  onChange={handleChange}
+                  onChange={(e) => handleAddressChange(e, "clientAddress")}
                   className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
@@ -311,7 +311,7 @@ const EditInvoice: React.FC = () => {
               Payment Terms
             </label>
             <textarea
-              name="description"
+              name="paymentTerms"
               value={formData.paymentTerms}
               onChange={handleChange}
               className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
