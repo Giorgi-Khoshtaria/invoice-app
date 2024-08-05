@@ -4,6 +4,7 @@ import Content from "./conponents/Pages/Content";
 import InvoiceProvider from "./contexts/InvoiceAppContext";
 import IvoicePage from "./conponents/Pages/InvoicePage";
 import Editinvoice from "./conponents/Pages/Editinvoice";
+import NewInvoice from "./conponents/Pages/NewInvoice";
 function App() {
   const router = createBrowserRouter([
     {
@@ -13,6 +14,7 @@ function App() {
         { path: "/", element: <Content /> },
         { path: "/invoice/:id", element: <IvoicePage /> },
         { path: "/invoice/:id/edit", element: <Editinvoice /> },
+        { path: "/new", element: <NewInvoice /> },
       ],
     },
   ]);

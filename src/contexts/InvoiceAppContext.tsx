@@ -16,6 +16,7 @@ interface InvoiceContextProps {
   updateInvoice: (updatedInvoice: Invoice) => void;
   deleteInvoice: (id: string) => void;
   markAsPaid: (id: string) => void;
+  newInvoice: (inv: Invoice) => void;
 }
 
 export const InvoiceContext = createContext<InvoiceContextProps>({
@@ -26,6 +27,7 @@ export const InvoiceContext = createContext<InvoiceContextProps>({
   updateInvoice: () => {},
   deleteInvoice: () => {},
   markAsPaid: () => {},
+  newInvoice: () => {},
 });
 
 interface InvoiceProviderProps {
@@ -58,7 +60,10 @@ const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) => {
       )
     );
   };
-
+  const newInvoice = (inv: Invoice) => {
+    console.log(inv);
+    setInvoices((prevInvoices) => [...prevInvoices, inv]);
+  };
   const deleteInvoice = (id: string) => {
     setInvoices((prevInvoices) =>
       prevInvoices.filter((invoice) => invoice.id !== id)
@@ -83,6 +88,7 @@ const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) => {
         updateInvoice,
         deleteInvoice,
         markAsPaid,
+        newInvoice,
       }}
     >
       {children}
@@ -92,6 +98,7 @@ const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) => {
 
 export default InvoiceProvider;
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useInvoice = () => {
   const context = useContext(InvoiceContext);
   if (!context) {

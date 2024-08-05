@@ -2,6 +2,7 @@ import React from "react";
 import "./FilterAndNew.css";
 import { useState } from "react";
 import { useInvoice } from "../../../contexts/InvoiceAppContext"; // Import the CSS file
+import { Link } from "react-router-dom";
 
 function FilterAndNew() {
   const { setFilterStatus, invoices } = useInvoice();
@@ -62,9 +63,12 @@ function FilterAndNew() {
               fill="#7C5DFA"
             />
           </svg>
-          <p className="text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
+          <Link
+            to="/new"
+            className="text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+          >
             New
-          </p>
+          </Link>
         </div>
       </div>
     </div>

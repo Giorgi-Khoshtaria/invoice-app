@@ -2,33 +2,35 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useInvoice } from "../../contexts/InvoiceAppContext";
 import delate from "/assets/icon-delete.svg";
+import { Invoice, Item } from "../../contexts/types";
+// interface Address {
+//   street: string;
+//   city: string;
+//   postCode: string;
+//   country: string;
+// }
 
-interface Address {
-  street: string;
-  city: string;
-  postCode: string;
-  country: string;
-}
+// interface Item {
+//   name: string;
+//   quantity: string; // Changed to string
+//   price: string; // Changed to string
+//   total: number;
+// }
 
-interface Item {
-  name: string;
-  quantity: number;
-  price: number;
-  total: number;
-}
-
-interface Invoice {
-  id: string;
-  clientName: string;
-  clientEmail: string;
-  clientAddress: Address;
-  senderAddress: Address;
-  description: string;
-  paymentTerms: string;
-  paymentDue: string;
-  status: string;
-  items: Item[];
-}
+// interface Invoice {
+//   id: string;
+//   clientName: string;
+//   clientEmail: string;
+//   clientAddress: Address;
+//   senderAddress: Address;
+//   description: string;
+//   paymentTerms: string;
+//   paymentDue: string;
+//   status: string;
+//   items: Item[];
+//   createdAt: string; // Adjust type as necessary
+//   total: number; // Adjust type as necessary
+// }
 
 const EditInvoice: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -83,13 +85,18 @@ const EditInvoice: React.FC = () => {
           const updatedItem = {
             ...item,
             [field]:
-              field === "quantity" || field === "price" ? Number(value) : value,
+              field === "quantity" || field === "price"
+                ? typeof value === "string"
+                  ? value
+                  : String(value) // Keep as string
+                : value,
           };
 
           // Recalculate total for the item
           if (field === "quantity" || field === "price") {
-            updatedItem.total =
-              (updatedItem.quantity || 0) * (updatedItem.price || 0);
+            const quantity = Number(updatedItem.quantity) || 0;
+            const price = Number(updatedItem.price) || 0;
+            updatedItem.total = quantity * price;
           }
 
           return updatedItem;
@@ -117,9 +124,9 @@ const EditInvoice: React.FC = () => {
     if (formData) {
       const newItem: Item = {
         name: "",
-        quantity: 0,
-        price: 0,
-        total: 0, // Initialize total
+        quantity: "",
+        price: "",
+        total: 0,
       };
 
       setFormData((prevState) => ({
@@ -355,13 +362,8 @@ const EditInvoice: React.FC = () => {
                   type="number"
                   name="quantity"
                   value={item.quantity}
-                  onChange={
-                    (e) =>
-                      handleItemChange(
-                        index,
-                        "quantity",
-                        e.target.valueAsNumber
-                      ) // Use valueAsNumber for numeric inputs
+                  onChange={(e) =>
+                    handleItemChange(index, "quantity", e.target.value)
                   }
                   className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
@@ -374,9 +376,8 @@ const EditInvoice: React.FC = () => {
                   type="number"
                   name="price"
                   value={item.price}
-                  onChange={
-                    (e) =>
-                      handleItemChange(index, "price", e.target.valueAsNumber) // Use valueAsNumber for numeric inputs
+                  onChange={(e) =>
+                    handleItemChange(index, "price", e.target.value)
                   }
                   className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />

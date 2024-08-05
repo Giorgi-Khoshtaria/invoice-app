@@ -6,7 +6,7 @@ import { useInvoice } from "../../contexts/InvoiceAppContext";
 
 const Content: React.FC = () => {
   const { invoices, filterStatus } = useInvoice();
-
+  console.log(invoices);
   const filteredInvoices =
     filterStatus === "all"
       ? invoices

@@ -8,12 +8,13 @@ export interface Address {
 
 export interface Item {
   name: string;
-  quantity: number;
-  price: number;
+  quantity: string;
+  price: string;
   total: number;
 }
 
 export interface Invoice {
+  invoiceDate: string | number | readonly string[] | undefined;
   id: string;
   createdAt: string;
   paymentDue: string;
