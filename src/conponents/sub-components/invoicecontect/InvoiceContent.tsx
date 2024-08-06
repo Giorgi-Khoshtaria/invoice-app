@@ -1,4 +1,3 @@
-// InvoiceContent.tsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -69,46 +68,92 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
         return "text-gray-500";
     }
   };
+
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`/invoice/${id}`);
   };
+
   return (
-    <div
-      onClick={handleClick}
-      className="w-full flex items-center flex-col bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4"
-    >
-      <div className="w-full flex items-center justify-between mb-6">
-        <p className="text-ube text-[15px] font-bold tracking-[-0.25px]">
-          # <span className="text-chineesBlack">{id}</span>
-        </p>
-        <p className="text-[13px] text-gray">{clientName}</p>
-      </div>
-      <div className="w-full flex items-center justify-between">
-        <div>
-          <p className="text-gray text-[13px] font-medium mb-2">
-            Due {formatDate(due)}
+    <div>
+      {/* Mobile view */}
+      <div
+        onClick={handleClick}
+        className="w-full flex items-center flex-col bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4 sm:hidden"
+      >
+        <div className="w-full flex items-center justify-between mb-6">
+          <p className="text-ube text-[15px] font-bold tracking-[-0.25px]">
+            # <span className="text-chineesBlack">{id}</span>
           </p>
-          <p className="text-chineesBlack text-[15px] font-bold">£ {total}</p>
+          <p className="text-[13px] text-gray">{clientName}</p>
         </div>
-        <div
-          className={`flex items-center justify-center ${getStatusBgColor(
-            status
-          )} w-[104px] h-[40px] flex-shrink-0 rounded-md`}
-        >
+        <div className="w-full flex items-center justify-between">
+          <div>
+            <p className="text-gray text-[13px] font-medium mb-2">
+              Due {formatDate(due)}
+            </p>
+            <p className="text-chineesBlack text-[15px] font-bold">£ {total}</p>
+          </div>
           <div
-            className={`w-[8px] h-[8px] rounded-full ${getDotColor(
+            className={`flex items-center justify-center ${getStatusBgColor(
               status
-            )} mr-2`}
-          />
-          <p
-            className={`${getStatusTextColor(
-              status
-            )} text-[13px] font-medium truncate`}
+            )} w-[104px] h-[40px] flex-shrink-0 rounded-md`}
           >
-            {status.charAt(0).toUpperCase() + status.slice(1)}
-          </p>
+            <div
+              className={`w-[8px] h-[8px] rounded-full ${getDotColor(
+                status
+              )} mr-2`}
+            />
+            <p
+              className={`${getStatusTextColor(
+                status
+              )} text-[13px] font-medium truncate`}
+            >
+              {status.charAt(0).toUpperCase() + status.slice(1)}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Tablet and larger screens */}
+      <div className="hidden sm:flex sm:w-full">
+        <div
+          onClick={handleClick}
+          className="w-full flex items-center bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4"
+        >
+          <div className="flex-1 flex items-center justify-between">
+            <p className="text-ube text-[15px] font-bold tracking-[-0.25px] mr-4">
+              # <span className="text-chineesBlack">{id}</span>
+            </p>
+            <p className="text-gray text-[13px] font-medium mr-4">
+              Due {formatDate(due)}
+            </p>
+            <p className="text-gray text-[13px] font-medium mr-4">
+              {clientName}
+            </p>
+            <p className="text-chineesBlack text-[15px] font-bold mr-4">
+              £ {total}
+            </p>
+            <div
+              className={`flex items-center justify-center ${getStatusBgColor(
+                status
+              )} w-[104px] h-[40px] rounded-md`}
+            >
+              <div
+                className={`w-[8px] h-[8px] rounded-full ${getDotColor(
+                  status
+                )} mr-2`}
+              />
+              <p
+                className={`${getStatusTextColor(
+                  status
+                )} text-[13px] font-medium truncate`}
+              >
+                {status.charAt(0).toUpperCase() + status.slice(1)}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

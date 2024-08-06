@@ -78,61 +78,89 @@ function InvoicePage() {
     <div>
       <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6">
         <div className="w-full">
-          <a
-            href="/"
-            className="flex items-center gap-6 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
-          >
-            {" "}
-            <img src={arrowleft} alt="" /> Go back
-          </a>
-          <div className=" bg-white rounded-lg flex items-center justify-between mt-[31px] mb-4 pt-6 pr-6 pb-[27px] pl-6">
-            <p className="text-[13px] font-medium text-gray tracking-[-0.1px] leading-[15px] ">
-              Status
-            </p>
-            <div
-              className={`flex items-center justify-center ${getStatusBgColor(
-                invoice.status
-              )} w-[104px] h-[40px] flex-shrink-0 rounded-md`}
-            >
-              <div
-                className={`w-[8px] h-[8px] rounded-full ${getDotColor(
-                  invoice.status
-                )} mr-2`}
-              />
-              <p
-                className={`${getStatusTextColor(
-                  invoice.status
-                )} text-[13px] font-medium truncate`}
+          <div>
+            <div>
+              <a
+                href="/"
+                className="flex items-center gap-6 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
               >
-                {invoice.status.charAt(0).toUpperCase() +
-                  invoice.status.slice(1)}
-              </p>
+                {" "}
+                <img src={arrowleft} alt="" /> Go back
+              </a>
+              <div className=" bg-white rounded-lg flex items-center justify-between mt-[31px] mb-4 pt-6 pr-6 pb-[27px] pl-6">
+                <p className="text-[13px] font-medium text-gray tracking-[-0.1px] leading-[15px] ">
+                  Status
+                </p>
+                <div
+                  className={`flex items-center justify-center ${getStatusBgColor(
+                    invoice.status
+                  )} w-[104px] h-[40px] flex-shrink-0 rounded-md`}
+                >
+                  <div
+                    className={`w-[8px] h-[8px] rounded-full ${getDotColor(
+                      invoice.status
+                    )} mr-2`}
+                  />
+                  <p
+                    className={`${getStatusTextColor(
+                      invoice.status
+                    )} text-[13px] font-medium truncate`}
+                  >
+                    {invoice.status.charAt(0).toUpperCase() +
+                      invoice.status.slice(1)}
+                  </p>
+                </div>
+                <div className="hidden sm:flex sm:gap-2">
+                  <Link
+                    to={`/invoice/${id}/edit`}
+                    className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={handleDelete}
+                    className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={handleMarkAsPaid}
+                    className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+                  >
+                    Mark as Paid
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="pt-6 pl-6 pb-6 pr-6 rounded-lg bg-white">
-            <div className="mb-[30px]">
-              <p className="text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
-                # <span className=" text-chineesBlack ">{invoice.id}</span>
-              </p>
-              <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] mt-1">
-                {invoice.description}
-              </p>
+
+          <div className="pt-6 pl-6 pb-6 pr-6 rounded-lg bg-white  ">
+            <div className=" sm:flex sm:items-center sm:justify-between">
+              <div className="mb-[30px]">
+                <p className="text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
+                  # <span className=" text-chineesBlack ">{invoice.id}</span>
+                </p>
+                <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] mt-1">
+                  {invoice.description}
+                </p>
+              </div>
+              <div className="flex flex-col items-start gap-1 mb-[31px] sm:text-right">
+                <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
+                  {invoice.senderAddress.street}
+                </p>
+                <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
+                  {invoice.senderAddress.city}
+                </p>
+                <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
+                  {invoice.senderAddress.postCode}
+                </p>
+                <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
+                  {invoice.senderAddress.country}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col items-start gap-1 mb-[31px]">
-              <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
-                {invoice.senderAddress.street}
-              </p>
-              <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
-                {invoice.senderAddress.city}
-              </p>
-              <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
-                {invoice.senderAddress.postCode}
-              </p>
-              <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
-                {invoice.senderAddress.country}
-              </p>
-            </div>
-            <div className=" mb-[35px] flex items-start justify-start gap-16">
+
+            <div className=" mb-[35px]  grid grid-cols-2 sm:grid-cols-3 sm:items-baseline">
               <div>
                 <div>
                   <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
@@ -175,15 +203,17 @@ function InvoicePage() {
                   </div>
                 </div>
               </div>
+
+              <div className="mb-[38px] mt-[31px]">
+                <p className=" mb-[13px] text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px]">
+                  Sent to
+                </p>
+                <p className="text-[15px] font-bold leading-[20px] tracking-[-0.25px]">
+                  {invoice.clientEmail}
+                </p>
+              </div>
             </div>
-            <div className="mb-[38px]">
-              <p className=" mb-[13px] text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px]">
-                Sent to
-              </p>
-              <p className="text-[15px] font-bold leading-[20px] tracking-[-0.25px]">
-                {invoice.clientEmail}
-              </p>
-            </div>
+
             <div className=" w-full flex items-start flex-col gap-6 p-6 bg-[#F9FAFE]">
               {invoice.items.map((item) => (
                 <div
@@ -215,7 +245,7 @@ function InvoicePage() {
           </div>
         </div>
       </div>
-      <div className=" mt-14 flex items-center justify-between p-6 bg-white">
+      <div className=" mt-14 flex items-center justify-between p-6 bg-white sm:hidden">
         <Link
           to={`/invoice/${id}/edit`}
           className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
