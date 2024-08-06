@@ -51,17 +51,6 @@ function NewInvoice() {
   const { newInvoice } = useInvoice();
   const navigate = useNavigate();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: name === "paymentTerms" ? Number(value) : value,
-    }));
-  };
-
   const handleAddressChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     addressType: "clientAddress" | "senderAddress"
@@ -140,14 +129,40 @@ function NewInvoice() {
     setFormData(initialFormData);
   };
 
-  const handleSaveAsDraft = () => {};
+  const handleSaveAsDraft = () => {
+    const draftInvoice = { ...formData, status: "draft" };
+    newInvoice(draftInvoice);
+    navigate("/");
+  };
 
   const handleSaveAndSend = () => {
     newInvoice(formData);
     console.log(formData);
     navigate("/");
   };
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    }).format(date);
+  };
 
+  // const formatPaymentTerms = (days: number): string => {
+  //   return `Net ${days} Days`;
+  // };
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    // e.target.value = "10/10/2024";
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: name === "paymentTerms" ? Number(value) : value,
+      [name]: name === "invoieDate" ? formatDate(value) : value,
+    }));
+  };
   return (
     <div className="p-6">
       <a
@@ -417,25 +432,25 @@ function NewInvoice() {
           </button>
         </div>
 
-        <div className="flex justify-end gap-4 mt-8">
+        <div className="flex justify-end gap-4 mt-8 bg-white">
           <button
             type="button"
             onClick={handleDiscard}
-            className="text-ube bg-[#F9FAFE] py-[18px] px-[24px] rounded-lg text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] focus:outline-none"
+            className="text-ube bg-[#F9FAFE] py-[18px] px-[15px] rounded-3xltext-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] focus:outline-none"
           >
             Discard
           </button>
           <button
             type="button"
             onClick={handleSaveAsDraft}
-            className="text-violetsBlue bg-[#F9FAFE] py-[18px] px-[24px] rounded-lg text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] focus:outline-none"
+            className="w-[117px] text-gray bg-[#373B53] py-[18px] px-[10px] rounded-lg text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] focus:outline-none"
           >
             Save as Draft
           </button>
           <button
             type="button"
             onClick={handleSaveAndSend}
-            className="text-white bg-violetsBlue py-[18px] px-[24px] rounded-lg text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] focus:outline-none"
+            className="text-white bg-violetsBlue py-[18px] px-[15px] rounded-lg text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] focus:outline-none"
           >
             Save & Send
           </button>

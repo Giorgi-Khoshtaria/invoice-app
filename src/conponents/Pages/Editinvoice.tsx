@@ -196,9 +196,9 @@ const EditInvoice: React.FC = () => {
               </label>
               <input
                 type="text"
-                name="street"
+                name="postCode"
                 value={formData.senderAddress.postCode}
-                onChange={(e) => handleAddressChange(e, "clientAddress")}
+                onChange={(e) => handleAddressChange(e, "senderAddress")}
                 className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
