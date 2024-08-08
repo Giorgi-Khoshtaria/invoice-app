@@ -22,6 +22,9 @@ export default {
         gostWhite: "#F8F8FB",
         eerieBlack: "#141625",
       },
+      height: {
+        "custom-height": "calc(100vh - 72px)",
+      },
     },
   },
   plugins: [],

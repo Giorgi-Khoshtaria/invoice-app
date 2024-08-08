@@ -76,7 +76,7 @@ function InvoicePage() {
 
   return (
     <div>
-      <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6">
+      <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6 h-screen">
         <div className="w-full">
           <div>
             <div>

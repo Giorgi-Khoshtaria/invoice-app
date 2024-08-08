@@ -6,6 +6,7 @@ import { useInvoice } from "../../contexts/InvoiceAppContext";
 
 const Content: React.FC = () => {
   const { invoices, filterStatus } = useInvoice();
+
   console.log(invoices);
   const filteredInvoices =
     filterStatus === "all"
@@ -13,7 +14,7 @@ const Content: React.FC = () => {
       : invoices.filter((invoice) => invoice.status === filterStatus);
 
   return (
-    <div className="w-full px-[20px]">
+    <div className="w-full px-[20px] h-screen ">
       <FilterAndNew />
       <div className="mt-8 w-full">
         {filteredInvoices.length === 0 ? (

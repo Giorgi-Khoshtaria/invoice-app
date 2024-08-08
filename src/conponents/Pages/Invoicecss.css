@@ -1,0 +1,7 @@
+.customehaight {
+}
+@media (min-width: 768px) {
+  .customehaight {
+    height: calc(100vh-72px);
+  }
+}
