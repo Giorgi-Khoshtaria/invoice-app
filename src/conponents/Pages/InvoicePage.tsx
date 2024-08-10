@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useInvoice } from "../../contexts/InvoiceAppContext";
 import arrowleft from "/assets/icon-arrow-left.svg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function InvoicePage() {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ function InvoicePage() {
 
   const { id } = useParams<{ id: string }>();
   const { invoices, deleteInvoice, markAsPaid } = useInvoice();
+  const [showModal, setShowModal] = useState(false);
 
   const invoice = invoices.find((inv) => inv.id === id);
 
@@ -75,7 +77,7 @@ function InvoicePage() {
   };
 
   return (
-    <div>
+    <div className="relative">
       <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6 h-screen">
         <div className="w-full">
           <div>
@@ -118,7 +120,9 @@ function InvoicePage() {
                     Edit
                   </Link>
                   <button
-                    onClick={handleDelete}
+                    onClick={() => {
+                      setShowModal(true);
+                    }}
                     className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
                   >
                     Delete
@@ -203,68 +207,128 @@ function InvoicePage() {
                   </div>
                 </div>
               </div>
-
-              <div className="mb-[38px] mt-[31px]">
-                <p className=" mb-[13px] text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px]">
+              <div>
+                <p className=" mb-[13px] text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
                   Sent to
                 </p>
-                <p className="text-[15px] font-bold leading-[20px] tracking-[-0.25px]">
-                  {invoice.clientEmail}
-                </p>
+                <div className="mb-[56px]">
+                  <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px]">
+                    {invoice.clientEmail}
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className=" w-full flex items-start flex-col gap-6 p-6 bg-[#F9FAFE]">
-              {invoice.items.map((item) => (
-                <div
-                  className=" w-full flex items-center justify-between "
-                  key={invoice.id}
-                >
-                  <div>
-                    <p className="mb-2 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
-                      {item.name}
-                    </p>
-                    <p className=" text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
-                      {item.quantity}x £{item.price}
-                    </p>
-                  </div>
-                  <p className="text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
-                    £ {item.total}
+            <div className=" bg-[#F9FAFE] sm:rounded-lg p-6">
+              <div className="mb-6 ">
+                <div className=" grid grid-cols-2 gap-[5px] sm:grid-cols-[1fr_1fr_1fr_1fr] ">
+                  <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px]">
+                    Item Name
+                  </p>
+                  <p className="text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] text-right">
+                    QTY.
+                  </p>
+                  <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] text-right ">
+                    Price
+                  </p>
+                  <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] text-right">
+                    Total
                   </p>
                 </div>
-              ))}
+              </div>
+
+              <div className="mb-6 ">
+                {invoice.items.map((item, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-2 gap-[5px] sm:grid-cols-[1fr_1fr_1fr_1fr] sm:items-center sm:justify-between sm:gap-0"
+                  >
+                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px]">
+                      {item.name}
+                    </p>
+                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px] text-right ">
+                      {item.quantity}
+                    </p>
+                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px] text-right">
+                      £ {item.price.toFixed(2)}
+                    </p>
+                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px] text-right">
+                      £ {item.total.toFixed(2)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-[#373B53] p-6 rounded-b-lg">
+                <div className="flex items-center justify-between">
+                  <p className=" text-white text-[13px] font-medium leading-[15px] tracking-[-0.1px]">
+                    Grand Total
+                  </p>
+                  <p className=" text-white text-[20px] font-bold leading-[32px] tracking-[-0.42px]">
+                    £ {invoice.total.toFixed(2)}
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className=" rounded-custom-br  flex items-center justify-between p-6 bg-charcoal">
-              <p className=" text-white text-[13px] font-medium leading-[18px] tracking-[-0.1px]">
-                Grand Total
-              </p>
-              <p className="text-white text-2xl font-bold leading-[32px] tracking-[-0.5px]">
-                £{invoice.total}
-              </p>
-            </div>
+          </div>
+          {/* Mobile Actions */}
+          <div className="flex items-center justify-between fixed left-0 bottom-0 w-full h-[91px]  bg-white p-6 sm:hidden">
+            <Link
+              to={`/invoice/${id}/edit`}
+              className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+            >
+              Edit
+            </Link>
+            <button
+              onClick={() => {
+                setShowModal(true);
+              }}
+              className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+            >
+              Delete
+            </button>
+            <button
+              onClick={handleMarkAsPaid}
+              className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+            >
+              Mark as Paid
+            </button>
           </div>
         </div>
       </div>
-      <div className=" mt-14 flex items-center justify-between p-6 bg-white sm:hidden">
-        <Link
-          to={`/invoice/${id}/edit`}
-          className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+
+      {showModal && (
+        <div
+          onClick={() => {
+            setShowModal(false);
+          }}
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
         >
-          Edit
-        </Link>
-        <button
-          onClick={handleDelete}
-          className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
-        >
-          Delete
-        </button>
-        <button
-          onClick={handleMarkAsPaid}
-          className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
-        >
-          Mark as Paid
-        </button>
-      </div>
+          <div className="bg-white p-6 rounded-md w-[90%] max-w-md">
+            <h1 className=" mb-2 text-chineesBlack text-2xl not-italic font-bold leading-8 tracking-[-0.5px]">
+              Confirm Deletion
+            </h1>
+            <p className=" text-ube mb-[22px]text-2xl not-italic font-bold leading-8 tracking-[-0.5px]">
+              Are you sure you want to delete invoice {invoice.id} This action
+              cannot be undone.
+            </p>
+            <div className="flex justify-end mt-4 gap-4">
+              <button
+                onClick={() => setShowModal(false)}
+                className="pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDelete}
+                className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

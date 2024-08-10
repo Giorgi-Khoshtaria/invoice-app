@@ -157,7 +157,7 @@ const EditInvoice: React.FC = () => {
     >
       <div
         style={{ height: "calc(100vh-72px)" }}
-        className="w-full max-w-md bg-white p-6 rounded-lg  "
+        className="w-full max-w-lg bg-white p-6 rounded-lg  "
       >
         <a
           href="/"
@@ -352,19 +352,25 @@ const EditInvoice: React.FC = () => {
           </h2>
 
           {formData.items.map((item, index) => (
-            <div key={index} className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                Item Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={item.name}
-                onChange={(e) =>
-                  handleItemChange(index, "name", e.target.value)
-                }
-                className="mb-[25px] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-              />
+            <div
+              key={index}
+              className="mb-4 sm:flex sm:items-center sm:justify-between"
+            >
+              <div>
+                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                  Item Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={item.name}
+                  onChange={(e) =>
+                    handleItemChange(index, "name", e.target.value)
+                  }
+                  className="mb-[25px] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                />
+              </div>
+
               <div className=" flex items-center gap-4 ">
                 <div className="flex flex-col ">
                   <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
