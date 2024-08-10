@@ -77,8 +77,8 @@ function InvoicePage() {
   };
 
   return (
-    <div className="relative">
-      <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6 h-screen">
+    <div className="">
+      <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6 ">
         <div className="w-full">
           <div>
             <div>
@@ -219,47 +219,70 @@ function InvoicePage() {
               </div>
             </div>
 
-            <div className=" bg-[#F9FAFE] sm:rounded-lg p-6">
-              <div className="mb-6 ">
-                <div className=" grid grid-cols-2 gap-[5px] sm:grid-cols-[1fr_1fr_1fr_1fr] ">
-                  <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px]">
-                    Item Name
-                  </p>
-                  <p className="text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] text-right">
-                    QTY.
-                  </p>
-                  <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] text-right ">
-                    Price
-                  </p>
-                  <p className=" text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] text-right">
-                    Total
-                  </p>
-                </div>
-              </div>
-
-              <div className="mb-6 ">
+            <div className=" bg-[#F9FAFE] rounded-lg p-6">
+              <div className="mb-6 sm:hidden ">
                 {invoice.items.map((item, index) => (
                   <div
                     key={index}
-                    className="grid grid-cols-2 gap-[5px] sm:grid-cols-[1fr_1fr_1fr_1fr] sm:items-center sm:justify-between sm:gap-0"
+                    className=" flex items-center justify-between"
                   >
-                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px]">
-                      {item.name}
-                    </p>
-                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px] text-right ">
-                      {item.quantity}
-                    </p>
-                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px] text-right">
-                      £ {item.price.toFixed(2)}
-                    </p>
-                    <p className=" text-[15px] font-bold leading-[20px] tracking-[-0.25px] text-right">
-                      £ {item.total.toFixed(2)}
-                    </p>
+                    <div className="flex flex-col items-start gap-2">
+                      <p className=" text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+                        {item.name}
+                      </p>
+                      <p className="text-ube text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+                        {" "}
+                        {item.quantity}x £ {item.price}
+                      </p>
+                    </div>
+                    <div className=" flex items-center justify-between">
+                      <p className="text-chineesBlack text-[15px] font-bold leading-[20px] tracking-[-0.25px] ">
+                        £ {item.total.toFixed(2)}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
+              <div className=" hidden sm:block sm:w-full">
+                <table className="w-full table-auto border-collapse ">
+                  <thead>
+                    <tr className="bg-gray-200">
+                      <th className="p-2 text-left text-ube text-[13px] not-italic font-medium leading-[18px] tracking-[-0.1px]">
+                        Item Name
+                      </th>
+                      <th className="p-2 text-right text-ube text-[13px] not-italic font-medium leading-[18px] tracking-[-0.1px]">
+                        QTY.
+                      </th>
+                      <th className="p-2 text-right text-ube text-[13px] not-italic font-medium leading-[18px] tracking-[-0.1px]">
+                        Price
+                      </th>
+                      <th className="p-2 text-right text-ube text-[13px] not-italic font-medium leading-[18px] tracking-[-0.1px]">
+                        Total
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="">
+                    {invoice.items.map((item, index) => (
+                      <tr key={index} className="">
+                        <td className="p-2 text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+                          {item.name}
+                        </td>
+                        <td className="p-2  text-ube text-right text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+                          {item.quantity}
+                        </td>
+                        <td className="p-2 text-ube text-right text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+                          £{item.price}
+                        </td>
+                        <td className="p-2 text-right text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+                          £{item.total}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
-              <div className="bg-[#373B53] p-6 rounded-b-lg">
+              <div className="bg-[#373B53] p-6 rounded-b-lg mt-[39px]">
                 <div className="flex items-center justify-between">
                   <p className=" text-white text-[13px] font-medium leading-[15px] tracking-[-0.1px]">
                     Grand Total
@@ -272,7 +295,7 @@ function InvoicePage() {
             </div>
           </div>
           {/* Mobile Actions */}
-          <div className="flex items-center justify-between fixed left-0 bottom-0 w-full h-[91px]  bg-white p-6 sm:hidden">
+          <div className="flex items-center justify-between  w-full h-[91px]  bg-white p-6 sm:hidden">
             <Link
               to={`/invoice/${id}/edit`}
               className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
@@ -304,7 +327,7 @@ function InvoicePage() {
           }}
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
         >
-          <div className="bg-white p-6 rounded-md w-[90%] max-w-md">
+          <div className="bg-white p-6 rounded-md w-[90%] max-w-[327px] sm:max-w-[480px]">
             <h1 className=" mb-2 text-chineesBlack text-2xl not-italic font-bold leading-8 tracking-[-0.5px]">
               Confirm Deletion
             </h1>
