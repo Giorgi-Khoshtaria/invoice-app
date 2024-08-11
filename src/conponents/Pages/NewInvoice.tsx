@@ -170,7 +170,7 @@ function NewInvoice() {
       onClick={handleNewShow}
       className="absolute top-[72px] w-full  flex items-start justify-start bg-black  bg-opacity-50 z-50"
     >
-      <div className="w-full max-w-md bg-white p-6 rounded-lg   ">
+      <div className="w-full max-w-lg bg-white p-6 rounded-lg   ">
         <a
           href="/"
           className="text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]"
@@ -194,7 +194,7 @@ function NewInvoice() {
                 name="street"
                 value={formData.senderAddress.street}
                 onChange={(e) => handleAddressChange(e, "senderAddress")}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="flex items-center justify-between gap-[23px]">
@@ -207,7 +207,7 @@ function NewInvoice() {
                   name="city"
                   value={formData.senderAddress.city}
                   onChange={(e) => handleAddressChange(e, "senderAddress")}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
 
@@ -220,7 +220,7 @@ function NewInvoice() {
                   name="postCode"
                   value={formData.senderAddress.postCode}
                   onChange={(e) => handleAddressChange(e, "senderAddress")}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
             </div>
@@ -234,7 +234,7 @@ function NewInvoice() {
                 name="country"
                 value={formData.senderAddress.country}
                 onChange={(e) => handleAddressChange(e, "senderAddress")}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
           </div>
@@ -251,7 +251,7 @@ function NewInvoice() {
                 name="clientName"
                 value={formData.clientName}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
@@ -263,7 +263,7 @@ function NewInvoice() {
                 name="clientEmail"
                 value={formData.clientEmail}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
@@ -275,7 +275,7 @@ function NewInvoice() {
                 name="street"
                 value={formData.clientAddress.street}
                 onChange={(e) => handleAddressChange(e, "clientAddress")}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="flex items-center justify-between gap-[23px]">
@@ -288,7 +288,7 @@ function NewInvoice() {
                   name="city"
                   value={formData.clientAddress.city}
                   onChange={(e) => handleAddressChange(e, "clientAddress")}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
 
@@ -301,7 +301,7 @@ function NewInvoice() {
                   name="postCode"
                   value={formData.clientAddress.postCode}
                   onChange={(e) => handleAddressChange(e, "clientAddress")}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
             </div>
@@ -315,7 +315,7 @@ function NewInvoice() {
                 name="country"
                 value={formData.clientAddress.country}
                 onChange={(e) => handleAddressChange(e, "clientAddress")}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
 
@@ -329,7 +329,7 @@ function NewInvoice() {
                   name="invoiceDate"
                   value={formData.invoiceDate}
                   onChange={handleChange}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
               <div className="mb-4 w-full">
@@ -341,7 +341,7 @@ function NewInvoice() {
                   name="paymentTerms"
                   value={formData.paymentTerms}
                   onChange={handleChange}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
             </div>
@@ -355,7 +355,7 @@ function NewInvoice() {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
           </div>
@@ -376,7 +376,7 @@ function NewInvoice() {
                     onChange={(e) =>
                       handleItemChange(index, "name", e.target.value)
                     }
-                    className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
                 <div className="flex items-center gap-[16px]">
@@ -390,7 +390,7 @@ function NewInvoice() {
                       onChange={(e) =>
                         handleItemChange(index, "quantity", e.target.value)
                       }
-                      className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                      className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                     />
                   </div>
 
@@ -404,7 +404,7 @@ function NewInvoice() {
                       onChange={(e) =>
                         handleItemChange(index, "price", e.target.value)
                       }
-                      className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                      className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                     />
                   </div>
 

@@ -153,11 +153,11 @@ const EditInvoice: React.FC = () => {
   return (
     <div
       onClick={handleEditShow}
-      className="absolute top-0  w-full  flex items-start justify-start bg-black  bg-opacity-50 z-50 "
+      className="absolute top-0  w-full  flex items-start justify-start bg-black  bg-opacity-50 z-10 "
     >
       <div
         style={{ height: "calc(100vh-72px)" }}
-        className="w-full max-w-lg bg-white p-6 rounded-lg  "
+        className="w-full max-w-xl bg-white p-6 rounded-lg z-20 "
       >
         <a
           href="/"
@@ -183,7 +183,7 @@ const EditInvoice: React.FC = () => {
                 name="senderAddress"
                 value={formData.senderAddress.street}
                 onChange={handleChange}
-                className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="flex items-center justify-between gap-[23px]">
@@ -196,7 +196,7 @@ const EditInvoice: React.FC = () => {
                   name="senderAddress"
                   value={formData.senderAddress.city}
                   onChange={handleChange}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
 
@@ -209,7 +209,7 @@ const EditInvoice: React.FC = () => {
                   name="postCode"
                   value={formData.senderAddress.postCode}
                   onChange={(e) => handleAddressChange(e, "senderAddress")}
-                  className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
             </div>
@@ -223,7 +223,7 @@ const EditInvoice: React.FC = () => {
                 name=" senderAddress"
                 value={formData.senderAddress.country}
                 onChange={(e) => handleAddressChange(e, "senderAddress")}
-                className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className=" border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
           </div>
@@ -240,7 +240,7 @@ const EditInvoice: React.FC = () => {
                 name="clientName"
                 value={formData.clientName}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
@@ -252,7 +252,7 @@ const EditInvoice: React.FC = () => {
                 name="clientEmail"
                 value={formData.clientEmail}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
@@ -264,7 +264,7 @@ const EditInvoice: React.FC = () => {
                 name="country"
                 value={formData.clientAddress.street}
                 onChange={(e) => handleAddressChange(e, "clientAddress")}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div>
@@ -278,7 +278,7 @@ const EditInvoice: React.FC = () => {
                     name="clientAddress"
                     value={formData.clientAddress.city}
                     onChange={(e) => handleAddressChange(e, "clientAddress")}
-                    className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
 
@@ -291,7 +291,7 @@ const EditInvoice: React.FC = () => {
                     name="street"
                     value={formData.clientAddress.postCode}
                     onChange={(e) => handleAddressChange(e, "clientAddress")}
-                    className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
               </div>
@@ -305,7 +305,7 @@ const EditInvoice: React.FC = () => {
                 name="country"
                 value={formData.clientAddress.country}
                 onChange={(e) => handleAddressChange(e, "clientAddress")}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
           </div>
@@ -320,29 +320,29 @@ const EditInvoice: React.FC = () => {
                 name="paymentDue"
                 value={formData.paymentDue}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
               <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                 Payment Terms
               </label>
-              <textarea
+              <input
                 name="paymentTerms"
                 value={formData.paymentTerms}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
               <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                 Project Description
               </label>
-              <textarea
+              <input
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                className="text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
           </div>
@@ -354,7 +354,7 @@ const EditInvoice: React.FC = () => {
           {formData.items.map((item, index) => (
             <div
               key={index}
-              className="mb-4 sm:flex sm:items-center sm:justify-between"
+              className="mb-4 sm:flex sm:items-center sm:justify-between  sm:gap-2"
             >
               <div>
                 <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
@@ -367,7 +367,7 @@ const EditInvoice: React.FC = () => {
                   onChange={(e) =>
                     handleItemChange(index, "name", e.target.value)
                   }
-                  className="mb-[25px] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] mb-[25px] sm:mb-[8px] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
 
@@ -383,7 +383,7 @@ const EditInvoice: React.FC = () => {
                     onChange={(e) =>
                       handleItemChange(index, "quantity", e.target.value)
                     }
-                    className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className=" border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -397,7 +397,7 @@ const EditInvoice: React.FC = () => {
                     onChange={(e) =>
                       handleItemChange(index, "price", e.target.value)
                     }
-                    className=" text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col items-start gap-[30px]">
