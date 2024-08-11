@@ -78,44 +78,47 @@ function InvoicePage() {
 
   return (
     <div className="">
-      <div className=" w-full flex items-center pt-[33px] pr-6 pb-0 pl-6 ">
+      <div className=" w-full flex items-center flex-col pt-[33px] pr-6 pb-0 pl-6 ">
         <div className="w-full">
           <div>
+            {" "}
+            <a
+              href="/"
+              className="flex items-center gap-6 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
+            >
+              {" "}
+              <img src={arrowleft} alt="" /> Go back
+            </a>
             <div>
-              <a
-                href="/"
-                className="flex items-center gap-6 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
-              >
-                {" "}
-                <img src={arrowleft} alt="" /> Go back
-              </a>
               <div className=" bg-white rounded-lg flex items-center justify-between mt-[31px] mb-4 pt-6 pr-6 pb-[27px] pl-6">
-                <p className="text-[13px] font-medium text-gray tracking-[-0.1px] leading-[15px] ">
-                  Status
-                </p>
-                <div
-                  className={`flex items-center justify-center ${getStatusBgColor(
-                    invoice.status
-                  )} w-[104px] h-[40px] flex-shrink-0 rounded-md`}
-                >
-                  <div
-                    className={`w-[8px] h-[8px] rounded-full ${getDotColor(
-                      invoice.status
-                    )} mr-2`}
-                  />
-                  <p
-                    className={`${getStatusTextColor(
-                      invoice.status
-                    )} text-[13px] font-medium truncate`}
-                  >
-                    {invoice.status.charAt(0).toUpperCase() +
-                      invoice.status.slice(1)}
+                <div className=" w-full flex items-center justify-between gap-[20px] sm:justify-start">
+                  <p className="text-[13px] font-medium text-gray tracking-[-0.1px] leading-[15px] ">
+                    Status
                   </p>
+                  <div
+                    className={`flex items-center justify-center ${getStatusBgColor(
+                      invoice.status
+                    )} w-[104px] h-[40px] flex-shrink-0 rounded-md`}
+                  >
+                    <div
+                      className={`w-[8px] h-[8px] rounded-full ${getDotColor(
+                        invoice.status
+                      )} mr-2`}
+                    />
+                    <p
+                      className={`${getStatusTextColor(
+                        invoice.status
+                      )} text-[13px] font-medium truncate`}
+                    >
+                      {invoice.status.charAt(0).toUpperCase() +
+                        invoice.status.slice(1)}
+                    </p>
+                  </div>
                 </div>
-                <div className="hidden sm:flex sm:gap-2">
+                <div className="hidden sm:flex sm:gap-2 sm:w-full">
                   <Link
                     to={`/invoice/${id}/edit`}
-                    className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+                    className="h-12 pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
                   >
                     Edit
                   </Link>
@@ -123,13 +126,13 @@ function InvoicePage() {
                     onClick={() => {
                       setShowModal(true);
                     }}
-                    className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+                    className=" h-12 pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
                   >
                     Delete
                   </button>
                   <button
                     onClick={handleMarkAsPaid}
-                    className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+                    className="w-[131px] pt-[18px]  pb-[15px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
                   >
                     Mark as Paid
                   </button>
@@ -139,7 +142,7 @@ function InvoicePage() {
           </div>
 
           <div className="pt-6 pl-6 pb-6 pr-6 rounded-lg bg-white  ">
-            <div className=" sm:flex sm:items-center sm:justify-between">
+            <div className=" sm:flex sm:items-baseline sm:gap-2 sm:justify-between">
               <div className="mb-[30px]">
                 <p className="text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]">
                   # <span className=" text-chineesBlack ">{invoice.id}</span>
@@ -208,7 +211,7 @@ function InvoicePage() {
                 </div>
               </div>
               <div>
-                <p className=" mb-[13px] text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
+                <p className=" mt-[35px] mb-[13px] text-ube text-[13px] font-medium leading-[15px] tracking-[-0.1px] ">
                   Sent to
                 </p>
                 <div className="mb-[56px]">
@@ -295,28 +298,28 @@ function InvoicePage() {
             </div>
           </div>
           {/* Mobile Actions */}
-          <div className="flex items-center justify-between  w-full h-[91px]  bg-white p-6 sm:hidden">
-            <Link
-              to={`/invoice/${id}/edit`}
-              className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
-            >
-              Edit
-            </Link>
-            <button
-              onClick={() => {
-                setShowModal(true);
-              }}
-              className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
-            >
-              Delete
-            </button>
-            <button
-              onClick={handleMarkAsPaid}
-              className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
-            >
-              Mark as Paid
-            </button>
-          </div>
+        </div>
+        <div className="flex items-center justify-between  w-screen p-6 h-[91px]  bg-white mt-14 sm:hidden">
+          <Link
+            to={`/invoice/${id}/edit`}
+            className=" pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+          >
+            Edit
+          </Link>
+          <button
+            onClick={() => {
+              setShowModal(true);
+            }}
+            className="pt-[18px] pr-[25px] pb-[15px] pl-6 rounded-3xl bg-fireOpal text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+          >
+            Delete
+          </button>
+          <button
+            onClick={handleMarkAsPaid}
+            className="pt-[18px] pr-[28px] pb-[15px] pl-[27px] rounded-3xl bg-violetsBlue text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+          >
+            Mark as Paid
+          </button>
         </div>
       </div>
 
