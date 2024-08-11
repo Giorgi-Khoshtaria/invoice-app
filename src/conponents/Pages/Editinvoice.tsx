@@ -267,7 +267,7 @@ const EditInvoice: React.FC = () => {
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
-            <div>
+            <div className=" sm:flex sm:items-center sm:justify-between  sm:gap-6">
               <div className="flex items-center justify-between gap-[23px]">
                 <div className="mb-4">
                   <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
@@ -295,22 +295,22 @@ const EditInvoice: React.FC = () => {
                   />
                 </div>
               </div>
-            </div>
-            <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                Country
-              </label>
-              <input
-                type="text"
-                name="country"
-                value={formData.clientAddress.country}
-                onChange={(e) => handleAddressChange(e, "clientAddress")}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-              />
+              <div className="mb-4">
+                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                  Country
+                </label>
+                <input
+                  type="text"
+                  name="country"
+                  value={formData.clientAddress.country}
+                  onChange={(e) => handleAddressChange(e, "clientAddress")}
+                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                />
+              </div>
             </div>
           </div>
 
-          <div>
+          <div className="sm:flex sm:items-center sm:justify-between  sm:gap-6">
             <div className="mb-4">
               <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                 Invoice Date
@@ -334,17 +334,17 @@ const EditInvoice: React.FC = () => {
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
-            <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                Project Description
-              </label>
-              <input
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-              />
-            </div>
+          </div>
+          <div className="mb-4">
+            <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              Project Description
+            </label>
+            <input
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+            />
           </div>
 
           <h2 className="mb-[22px] text-[#777F98] text-lg not-italic font-bold leading-8 tracking-[-0.375px]">

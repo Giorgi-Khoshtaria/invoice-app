@@ -197,45 +197,46 @@ function NewInvoice() {
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
-            <div className="flex items-center justify-between gap-[23px]">
+            <div className=" sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <div className="flex items-center justify-between gap-[23px]">
+                <div className="mb-4">
+                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                    City
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={formData.senderAddress.city}
+                    onChange={(e) => handleAddressChange(e, "senderAddress")}
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                    Post Code
+                  </label>
+                  <input
+                    type="text"
+                    name="postCode"
+                    value={formData.senderAddress.postCode}
+                    onChange={(e) => handleAddressChange(e, "senderAddress")}
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  />
+                </div>
+              </div>
               <div className="mb-4">
                 <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                  City
+                  Country
                 </label>
                 <input
                   type="text"
-                  name="city"
-                  value={formData.senderAddress.city}
+                  name="country"
+                  value={formData.senderAddress.country}
                   onChange={(e) => handleAddressChange(e, "senderAddress")}
                   className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
-
-              <div className="mb-4">
-                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                  Post Code
-                </label>
-                <input
-                  type="text"
-                  name="postCode"
-                  value={formData.senderAddress.postCode}
-                  onChange={(e) => handleAddressChange(e, "senderAddress")}
-                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-                />
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                Country
-              </label>
-              <input
-                type="text"
-                name="country"
-                value={formData.senderAddress.country}
-                onChange={(e) => handleAddressChange(e, "senderAddress")}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-              />
             </div>
           </div>
           <div>
@@ -278,48 +279,50 @@ function NewInvoice() {
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
-            <div className="flex items-center justify-between gap-[23px]">
-              <div className="mb-4">
-                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                  City
-                </label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.clientAddress.city}
-                  onChange={(e) => handleAddressChange(e, "clientAddress")}
-                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-                />
+            <div className=" sm:flex sm:items-center sm:justify-between  sm:gap-6">
+              <div className="flex items-center justify-between gap-[23px]">
+                <div className="mb-4">
+                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                    City
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={formData.clientAddress.city}
+                    onChange={(e) => handleAddressChange(e, "clientAddress")}
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                    Post Code
+                  </label>
+                  <input
+                    type="text"
+                    name="postCode"
+                    value={formData.clientAddress.postCode}
+                    onChange={(e) => handleAddressChange(e, "clientAddress")}
+                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  />
+                </div>
               </div>
 
               <div className="mb-4">
                 <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                  Post Code
+                  Country
                 </label>
                 <input
                   type="text"
-                  name="postCode"
-                  value={formData.clientAddress.postCode}
+                  name="country"
+                  value={formData.clientAddress.country}
                   onChange={(e) => handleAddressChange(e, "clientAddress")}
                   className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
             </div>
 
-            <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
-                Country
-              </label>
-              <input
-                type="text"
-                name="country"
-                value={formData.clientAddress.country}
-                onChange={(e) => handleAddressChange(e, "clientAddress")}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-              />
-            </div>
-
-            <div className="flex items-center flex-col gap-[23px]">
+            <div className="flex items-center flex-col gap-[23px] sm:flex-row">
               <div className="mb-4 w-full">
                 <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                   Invoice Date
