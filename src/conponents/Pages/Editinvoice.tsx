@@ -129,10 +129,54 @@ const EditInvoice: React.FC = () => {
     }
   };
 
+  const validateForm = (): boolean => {
+    if (!formData) return false;
+
+    const requiredFields = [
+      formData.senderAddress.street,
+      formData.senderAddress.city,
+      formData.senderAddress.postCode,
+      formData.senderAddress.country,
+      formData.clientName,
+      formData.clientEmail,
+      formData.clientAddress.street,
+      formData.clientAddress.city,
+      formData.clientAddress.postCode,
+      formData.clientAddress.country,
+      formData.paymentDue,
+      formData.paymentTerms,
+      formData.description,
+    ];
+
+    // Check if all required fields are non-empty strings
+    const allFieldsValid = requiredFields.every((field) =>
+      typeof field === "string"
+        ? field.trim() !== ""
+        : field !== undefined && field !== null
+    );
+
+    // Check if all items are valid
+    const itemsValid = formData.items.every(
+      (item) =>
+        typeof item.name === "string" &&
+        item.name.trim() !== "" &&
+        typeof item.quantity === "string" &&
+        item.quantity.trim() !== "" &&
+        typeof item.price === "string" &&
+        item.price.trim() !== ""
+    );
+
+    return allFieldsValid && itemsValid;
+  };
+
   const handleSave = () => {
-    if (formData) {
-      updateInvoice(formData);
-      navigate(`/invoice/${id}`);
+    if (validateForm()) {
+      if (formData) {
+        updateInvoice(formData);
+        navigate(`/invoice/${id}`);
+      }
+    } else {
+      alert("Please fill in all required fields.");
     }
   };
   const handleEditShow = () => {
@@ -214,7 +258,7 @@ const EditInvoice: React.FC = () => {
               </label>
               <input
                 type="text"
-                name=" senderAddress"
+                name="senderAddress"
                 value={formData.senderAddress.country}
                 onChange={(e) => handleAddressChange(e, "senderAddress")}
                 className=" border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
@@ -255,7 +299,7 @@ const EditInvoice: React.FC = () => {
               </label>
               <input
                 type="text"
-                name="country"
+                name="street"
                 value={formData.clientAddress.street}
                 onChange={(e) => handleAddressChange(e, "clientAddress")}
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
@@ -269,7 +313,7 @@ const EditInvoice: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    name="clientAddress"
+                    name="city"
                     value={formData.clientAddress.city}
                     onChange={(e) => handleAddressChange(e, "clientAddress")}
                     className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
@@ -282,7 +326,7 @@ const EditInvoice: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    name="street"
+                    name="postCode"
                     value={formData.clientAddress.postCode}
                     onChange={(e) => handleAddressChange(e, "clientAddress")}
                     className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
@@ -311,7 +355,7 @@ const EditInvoice: React.FC = () => {
               </label>
               <input
                 type="date"
-                name="paymentDue"
+                name="createdAt"
                 value={formData.paymentDue}
                 onChange={handleChange}
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
@@ -328,7 +372,11 @@ const EditInvoice: React.FC = () => {
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               >
                 {Object.entries(paymentTermsOptions).map(([key, value]) => (
-                  <option key={key} value={key}>
+                  <option
+                    className="text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]"
+                    key={key}
+                    value={key}
+                  >
                     {value}
                   </option>
                 ))}

@@ -182,7 +182,7 @@ function InvoicePage() {
                     Payment Due
                   </p>
                   <p className=" mt-[13px] text-[15px] font-bold leading-[20px] tracking-[-0.25px]">
-                    {formatDate(invoice.createdAt)}
+                    {formatDate(invoice.paymentDue)}
                   </p>
                 </div>
               </div>

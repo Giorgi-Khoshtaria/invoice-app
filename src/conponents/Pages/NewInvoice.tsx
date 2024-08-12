@@ -128,17 +128,59 @@ function NewInvoice() {
   const handleDiscard = () => {
     setFormData(initialFormData);
   };
+  const validateForm = (): boolean => {
+    const requiredFields = [
+      formData.senderAddress.street,
+      formData.senderAddress.city,
+      formData.senderAddress.postCode,
+      formData.senderAddress.country,
+      formData.clientName,
+      formData.clientEmail,
+      formData.clientAddress.street,
+      formData.clientAddress.city,
+      formData.clientAddress.postCode,
+      formData.clientAddress.country,
+      formData.paymentDue,
+      formData.paymentTerms,
+      formData.description,
+    ];
+
+    const allFieldsValid = requiredFields.every((field) =>
+      typeof field === "string"
+        ? field.trim() !== ""
+        : field !== undefined && field !== null
+    );
+
+    const itemsValid = formData.items.every(
+      (item) =>
+        typeof item.name === "string" &&
+        item.name.trim() !== "" &&
+        typeof item.quantity === "number" &&
+        item.quantity > 0 &&
+        typeof item.price === "number" &&
+        item.price > 0
+    );
+
+    return allFieldsValid && itemsValid;
+  };
 
   const handleSaveAsDraft = () => {
-    const draftInvoice = { ...formData, status: "draft" };
-    newInvoice(draftInvoice);
-    navigate("/");
+    if (validateForm()) {
+      const draftInvoice = { ...formData, status: "draft" };
+      newInvoice(draftInvoice);
+      navigate("/");
+    } else {
+      alert("Form validation failed,Please fill in all fields");
+    }
   };
 
   const handleSaveAndSend = () => {
-    newInvoice(formData);
-    console.log(formData);
-    navigate("/");
+    if (validateForm()) {
+      newInvoice(formData);
+      navigate("/");
+    } else {
+      alert("Form validation failed,Please fill in all fields");
+    }
   };
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -356,7 +398,11 @@ function NewInvoice() {
                   className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 >
                   {Object.entries(paymentTermsOptions).map(([key, value]) => (
-                    <option key={key} value={key}>
+                    <option
+                      className="py-[15px] border-b-[springgreen] border-b border-solid bg-white  text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]"
+                      key={key}
+                      value={key}
+                    >
                       {value}
                     </option>
                   ))}
