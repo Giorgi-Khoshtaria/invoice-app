@@ -5,6 +5,7 @@ import Editinvoice from "./conponents/Pages/Editinvoice";
 import NewInvoice from "./conponents/Pages/NewInvoice";
 import Invoicelayout from "./conponents/layout/Invoicelayout";
 import ContentLayout from "./conponents/layout/ContentLayout";
+import ThemeProvider from "./contexts/ThemeContext";
 function App() {
   const router = createBrowserRouter([
     {
@@ -34,7 +35,9 @@ function App() {
   ]);
   return (
     <InvoiceProvider>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </InvoiceProvider>
   );
 }
