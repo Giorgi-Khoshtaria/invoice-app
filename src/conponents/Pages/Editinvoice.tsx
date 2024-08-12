@@ -4,34 +4,7 @@ import { useInvoice } from "../../contexts/InvoiceAppContext";
 import delate from "/assets/icon-delete.svg";
 import { Invoice, Item } from "../../contexts/types";
 import "./Invoicecss.css";
-// interface Address {
-//   street: string;
-//   city: string;
-//   postCode: string;
-//   country: string;
-// }
-
-// interface Item {
-//   name: string;
-//   quantity: string; // Changed to string
-//   price: string; // Changed to string
-//   total: number;
-// }
-
-// interface Invoice {
-//   id: string;
-//   clientName: string;
-//   clientEmail: string;
-//   clientAddress: Address;
-//   senderAddress: Address;
-//   description: string;
-//   paymentTerms: string;
-//   paymentDue: string;
-//   status: string;
-//   items: Item[];
-//   createdAt: string; // Adjust type as necessary
-//   total: number; // Adjust type as necessary
-// }
+import arrowleft from "/assets/icon-arrow-left.svg";
 
 const EditInvoice: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -151,19 +124,21 @@ const EditInvoice: React.FC = () => {
   }
 
   return (
-    <div
-      onClick={handleEditShow}
-      className="absolute top-0  w-full  flex items-start justify-start bg-black h-screen  bg-opacity-50 z-10 "
-    >
+    <div className="">
+      <div
+        onClick={handleEditShow}
+        className="absolute top-0  w-full  flex items-start justify-start bg-black h-screen  bg-opacity-50 z-10 "
+      ></div>
       <div
         style={{ height: "calc(100vh-72px)" }}
-        className="w-full max-w-xl bg-white p-6 rounded-lg z-20 sm:h-screen sm:overflow-auto "
+        className=" absolute top-0 w-full max-w-xl bg-white p-6 rounded-lg z-20 sm:h-screen sm:overflow-auto "
       >
         <a
           href="/"
-          className="text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]"
+          className=" w-24 flex items-center gap-5 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
         >
-          Go back
+          {" "}
+          <img src={arrowleft} alt="" /> Go back
         </a>
         <h1 className="text-2xl not-italic font-bold leading-8 tracking-[-0.5px] mb-[22px] mt-[26px]">
           Edit <span className="text-gray">#</span>

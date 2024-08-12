@@ -5,7 +5,7 @@ import { useInvoice } from "../../contexts/InvoiceAppContext";
 import { useNavigate } from "react-router-dom";
 // Adjust import as needed
 import { Invoice, Item } from "../../contexts/types";
-
+import arrowleft from "/assets/icon-arrow-left.svg";
 const generateRandomCharacter = (): string => {
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   return characters.charAt(Math.floor(Math.random() * characters.length));
@@ -166,16 +166,18 @@ function NewInvoice() {
     }));
   };
   return (
-    <div
-      onClick={handleNewShow}
-      className="absolute top-[72px] w-full  flex items-start justify-start bg-black h-screen  bg-opacity-50 z-50"
-    >
-      <div className="w-full max-w-lg bg-white p-6 rounded-lg  sm:h-screen sm:overflow-auto ">
+    <div>
+      <div
+        onClick={handleNewShow}
+        className="absolute top-[72px] w-full  flex items-start justify-start bg-black h-screen  bg-opacity-50 z-10"
+      ></div>
+      <div className=" absolute top-[72px] w-full max-w-lg bg-white p-6 z-30 rounded-lg  sm:h-screen sm:overflow-auto ">
         <a
           href="/"
-          className="text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]"
+          className=" w-24 flex items-center gap-5 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
         >
-          Go back
+          {" "}
+          <img src={arrowleft} alt="" /> Go back
         </a>
         <h1 className="text-2xl not-italic font-bold leading-8 tracking-[-0.5px] mb-[22px] mt-[26px]">
           New Invoice

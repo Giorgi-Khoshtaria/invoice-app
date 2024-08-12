@@ -84,7 +84,7 @@ function InvoicePage() {
             {" "}
             <a
               href="/"
-              className="flex items-center gap-6 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
+              className=" w-24 flex items-center gap-5 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
             >
               {" "}
               <img src={arrowleft} alt="" /> Go back
