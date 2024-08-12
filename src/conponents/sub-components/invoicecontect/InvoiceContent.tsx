@@ -35,7 +35,7 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
       case "pending":
         return "bg-yellow-500 bg-opacity-10";
       case "draft":
-        return "bg-[rgba(55,59,83,0.0571)]"; // Custom background color for draft status
+        return "bg-[rgba(55, 59, 83, 0.1)] dark:bg-[rgba(223, 227, 250, 0.1)]";
       default:
         return "bg-gray-500 bg-opacity-10";
     }
@@ -49,7 +49,7 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
       case "pending":
         return "bg-yellow-500";
       case "draft":
-        return "bg-[#373B53]"; // Custom dot color for draft status
+        return "bg-[#373B53] dark:bg-[#DFE3FA]";
       default:
         return "bg-gray-500";
     }
@@ -63,7 +63,7 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
       case "pending":
         return "text-yellow-500";
       case "draft":
-        return "text-[#373B53]"; // Custom text color for draft status
+        return "text-[#373B53] dark:text-[#DFE3FA]";
       default:
         return "text-gray-500";
     }
@@ -76,24 +76,26 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
   };
 
   return (
-    <div>
+    <div className="">
       {/* Mobile view */}
       <div
         onClick={handleClick}
-        className="hover:border-1 hover:border-violetsBlue hover:border-1 w-full flex items-center flex-col bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4 sm:hidden"
+        className="hover:border-1 hover:border-violetsBlue hover:border-1 w-full flex items-center flex-col bg-white dark:bg-yankeesBlue rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4 sm:hidden"
       >
         <div className="w-full flex items-center justify-between mb-6">
           <p className="text-ube text-[15px] font-bold tracking-[-0.25px]">
-            # <span className="text-chineesBlack">{id}</span>
+            # <span className="text-chineesBlack dark:text-white">{id}</span>
           </p>
-          <p className="text-[13px] text-gray">{clientName}</p>
+          <p className="text-[13px] text-gray dark:text-white">{clientName}</p>
         </div>
         <div className="w-full flex items-center justify-between">
           <div>
-            <p className="text-gray text-[13px] font-medium mb-2">
+            <p className="text-gray text-[13px] font-medium mb-2 dark:text-lavender">
               Due {formatDate(due)}
             </p>
-            <p className="text-chineesBlack text-[15px] font-bold">£ {total}</p>
+            <p className="text-chineesBlack text-[15px] font-bold dark:text-white">
+              £ {total}
+            </p>
           </div>
           <div
             className={`flex items-center justify-center ${getStatusBgColor(
@@ -120,19 +122,19 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
       <div className="hidden sm:flex sm:w-full hover:border-1 hover:border-violetsBlue">
         <div
           onClick={handleClick}
-          className="w-full flex items-center bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4"
+          className="w-full flex items-center bg-white dark:bg-yankeesBlue rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4"
         >
           <div className="flex-1 flex items-center justify-between">
             <p className="text-ube text-[15px] font-bold tracking-[-0.25px] mr-4">
-              # <span className="text-chineesBlack">{id}</span>
+              # <span className="text-chineesBlack dark:text-white">{id}</span>
             </p>
-            <p className="text-gray text-[13px] font-medium mr-4">
+            <p className="text-gray text-[13px] font-medium mr-4 dark:text-lavender">
               Due {formatDate(due)}
             </p>
-            <p className="text-gray text-[13px] font-medium mr-4">
+            <p className="text-gray text-[13px] font-medium mr-4 dark:text-white">
               {clientName}
             </p>
-            <p className="text-chineesBlack text-[15px] font-bold mr-4">
+            <p className="text-chineesBlack text-[15px] font-bold mr-4 dark:text-white">
               £ {total}
             </p>
             <div

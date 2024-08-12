@@ -12,7 +12,10 @@
   border: 0; /* Remove border */
   outline: none; /* Remove outline when focused */
 }
-
+:root.dark .custom-select {
+  background-color: #141625;
+  color: white;
+}
 .custom-select:focus {
   border: none; /* Ensure no border on focus */
   box-shadow: none; /* Remove any box shadow */
@@ -29,7 +32,10 @@
   font-size: 15px; /* Font size for options */
   border: none; /* Ensure no border in options */
 }
-
+:root.dark option {
+  background-color: #141625;
+  color: white;
+}
 .custom-select:focus-visible {
   border: none; /* Remove any border when focused */
   outline: none; /* Remove any outline when focused */

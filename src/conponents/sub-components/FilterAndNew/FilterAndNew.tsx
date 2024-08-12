@@ -16,11 +16,11 @@ function FilterAndNew() {
   return (
     <div className="flex items-center justify-between mt-9">
       <div>
-        <h2 className="text-2xl font-bold leading-normal tracking-[-0.75px]">
+        <h2 className=" text-chineesBlack text-2xl font-bold leading-normal tracking-[-0.75px] sm:text-3xl dark:text-white">
           Invoices
         </h2>
-        <p className="text-gray font-medium leading-[15px] tracking-[-0.1px] text-[13px]">
-          {inv === 0 ? "No invoices" : `${inv} invoices`}
+        <p className="text-gray font-medium leading-[15px] tracking-[-0.1px] text-[13px] dark:text-lavender">
+          {inv === 0 ? "No invoices" : `There are ${inv} invoices`}
         </p>
       </div>
       <div className="flex items-center gap-[18px] ">
@@ -65,9 +65,10 @@ function FilterAndNew() {
           </svg>
           <Link
             to="/new"
-            className="text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
+            className=" flex gap-2 text-white text-[15px] font-bold leading-[15px] tracking-[-0.25px]"
           >
             New
+            <p className="hidden sm:block">Invoice</p>
           </Link>
         </div>
       </div>

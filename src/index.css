@@ -11,3 +11,6 @@ body {
   font-family: "League Spartan", sans-serif;
   background-color: #f8f8fb;
 }
+:root.dark body {
+  background-color: #141625; /* Example dark background color */
+}
