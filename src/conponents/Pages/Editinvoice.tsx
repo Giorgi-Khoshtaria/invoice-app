@@ -356,7 +356,7 @@ const EditInvoice: React.FC = () => {
               <input
                 type="date"
                 name="createdAt"
-                value={formData.paymentDue}
+                value={formData.createdAt}
                 onChange={handleChange}
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
