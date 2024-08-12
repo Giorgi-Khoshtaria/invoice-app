@@ -80,7 +80,7 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
       {/* Mobile view */}
       <div
         onClick={handleClick}
-        className="w-full flex items-center flex-col bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4 sm:hidden"
+        className="hover:border-1 hover:border-violetsBlue hover:border-1 w-full flex items-center flex-col bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4 sm:hidden"
       >
         <div className="w-full flex items-center justify-between mb-6">
           <p className="text-ube text-[15px] font-bold tracking-[-0.25px]">
@@ -117,7 +117,7 @@ const InvoiceContent: React.FC<InvoiceContentProps> = ({
       </div>
 
       {/* Tablet and larger screens */}
-      <div className="hidden sm:flex sm:w-full">
+      <div className="hidden sm:flex sm:w-full hover:border-1 hover:border-violetsBlue">
         <div
           onClick={handleClick}
           className="w-full flex items-center bg-white rounded-lg pt-[25px] pr-[24px] pb-[22px] pl-[24px] mb-4"
