@@ -154,14 +154,22 @@ function NewInvoice() {
   // const formatPaymentTerms = (days: number): string => {
   //   return `Net ${days} Days`;
   // };
+  const paymentTermsOptions = {
+    1: "Net 1 Day",
+    7: "Net 7 Days",
+    14: "Net 14 Days",
+    30: "Net 30 Days",
+  };
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     // e.target.value = "10/10/2024";
     setFormData((prevState) => ({
       ...prevState,
-      [name]: name === "paymentTerms" ? Number(value) : value,
+      [name]: name === "paymentTerms" ? parseInt(value) : value,
       [name]: name === "invoieDate" ? formatDate(value) : value,
     }));
   };
@@ -341,13 +349,18 @@ function NewInvoice() {
                 <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                   Payment Terms
                 </label>
-                <input
-                  type="text"
+                <select
                   name="paymentTerms"
                   value={formData.paymentTerms}
                   onChange={handleChange}
                   className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-                />
+                >
+                  {Object.entries(paymentTermsOptions).map(([key, value]) => (
+                    <option key={key} value={key}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 

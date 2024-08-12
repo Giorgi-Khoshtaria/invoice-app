@@ -19,7 +19,12 @@ const EditInvoice: React.FC = () => {
       setFormData(currentInvoice);
     }
   }, [id, invoices]);
-
+  const paymentTermsOptions = {
+    1: "Net 1 Day",
+    7: "Net 7 Days",
+    14: "Net 14 Days",
+    30: "Net 30 Days",
+  };
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -31,7 +36,21 @@ const EditInvoice: React.FC = () => {
       }));
     }
   };
+  const handleTermsChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => {
+      if (!prevData) return null;
 
+      return {
+        ...prevData,
+        [name]: name === "paymentTerms" ? parseInt(value) : value,
+      };
+    });
+  };
   const handleAddressChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     addressType: "clientAddress" | "senderAddress"
@@ -302,12 +321,18 @@ const EditInvoice: React.FC = () => {
               <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                 Payment Terms
               </label>
-              <input
+              <select
                 name="paymentTerms"
                 value={formData.paymentTerms}
-                onChange={handleChange}
+                onChange={handleTermsChange}
                 className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
-              />
+              >
+                {Object.entries(paymentTermsOptions).map(([key, value]) => (
+                  <option key={key} value={key}>
+                    {value}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="mb-4">
