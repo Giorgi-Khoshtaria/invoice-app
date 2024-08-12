@@ -115,7 +115,7 @@ function InvoicePage() {
                     </p>
                   </div>
                 </div>
-                <div className="hidden sm:flex sm:gap-2 sm:w-full">
+                <div className="hidden sm:flex sm:justify-between sm:gap-2 sm:w-full">
                   <Link
                     to={`/invoice/${id}/edit`}
                     className="h-12 pt-[18px] pr-[23px] pb-[15px] pl-6 rounded-3xl bg-[#F9FAFE] text-ube text-[15px] font-bold leading-[15px] tracking-[-0.25px]"

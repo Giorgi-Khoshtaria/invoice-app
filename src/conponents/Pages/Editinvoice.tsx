@@ -153,11 +153,11 @@ const EditInvoice: React.FC = () => {
   return (
     <div
       onClick={handleEditShow}
-      className="absolute top-0  w-full  flex items-start justify-start bg-black  bg-opacity-50 z-10 "
+      className="absolute top-0  w-full  flex items-start justify-start bg-black h-screen  bg-opacity-50 z-10 "
     >
       <div
         style={{ height: "calc(100vh-72px)" }}
-        className="w-full max-w-xl bg-white p-6 rounded-lg z-20 "
+        className="w-full max-w-xl bg-white p-6 rounded-lg z-20 sm:h-screen sm:overflow-auto "
       >
         <a
           href="/"

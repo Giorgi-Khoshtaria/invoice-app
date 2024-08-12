@@ -168,9 +168,9 @@ function NewInvoice() {
   return (
     <div
       onClick={handleNewShow}
-      className="absolute top-[72px] w-full  flex items-start justify-start bg-black  bg-opacity-50 z-50"
+      className="absolute top-[72px] w-full  flex items-start justify-start bg-black h-screen  bg-opacity-50 z-50"
     >
-      <div className="w-full max-w-lg bg-white p-6 rounded-lg   ">
+      <div className="w-full max-w-lg bg-white p-6 rounded-lg  sm:h-screen sm:overflow-auto ">
         <a
           href="/"
           className="text-chineesBlack text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]"
