@@ -14,7 +14,7 @@ const Content: React.FC = () => {
       : invoices.filter((invoice) => invoice.status === filterStatus);
 
   return (
-    <div className="w-full px-[20px] h-screen ">
+    <div className="w-full px-[20px] h-screen  ">
       <FilterAndNew />
       <div className="mt-8 w-full">
         {filteredInvoices.length === 0 ? (

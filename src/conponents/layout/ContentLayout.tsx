@@ -3,7 +3,7 @@ import Content from "../Pages/Content";
 
 function ContentLayout() {
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Content />
       <Outlet />
     </div>
