@@ -190,20 +190,20 @@ const EditInvoice: React.FC = () => {
     <div className="">
       <div
         onClick={handleEditShow}
-        className="absolute top-0  w-full  flex items-start justify-start bg-black h-screen  bg-opacity-50 z-10 "
+        className="absolute top-0  w-full  flex items-start justify-start  bg-black h-screen  bg-opacity-50 z-10 "
       ></div>
       <div
         style={{ height: "calc(100vh-72px)" }}
-        className=" absolute top-0 w-full max-w-xl bg-white p-6 rounded-lg z-20 sm:h-screen sm:overflow-auto "
+        className=" absolute top-0 w-full max-w-xl dark:bg-eerieBlack bg-white p-6 rounded-lg z-20 sm:h-screen sm:overflow-auto "
       >
         <a
           href="/"
-          className=" w-24 flex items-center gap-5 text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
+          className=" w-24 flex items-center gap-5 sm:hidden text-chineesBlack text-[15px] font-bold leading-[15px] tracking-[-0.25px] "
         >
           {" "}
           <img src={arrowleft} alt="" /> Go back
         </a>
-        <h1 className="text-2xl not-italic font-bold leading-8 tracking-[-0.5px] mb-[22px] mt-[26px]">
+        <h1 className="dark:text-white text-chineesBlack text-2xl not-italic font-bold leading-8 tracking-[-0.5px] mb-[22px] mt-[26px]">
           Edit <span className="text-gray">#</span>
           {formData.id}
         </h1>
@@ -213,55 +213,71 @@ const EditInvoice: React.FC = () => {
               Bill From
             </h2>
             <div className="mb-4 flex flex-col items-start">
-              <label className=" text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              <label
+                htmlFor="senderStreet"
+                className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+              >
                 Street Address
               </label>
               <input
+                id="senderStreet"
                 type="text"
                 name="senderAddress"
                 value={formData.senderAddress.street}
                 onChange={handleChange}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid dark:border-semiYankeesBlue border-[#DFE3FA] dark:text-white text-chineesBlack dark:bg-yankeesBlue w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="flex items-center justify-between gap-[23px]">
               <div className="mb-4">
-                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                <label
+                  htmlFor="senderCity"
+                  className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                >
                   City
                 </label>
                 <input
+                  id="senderCity"
                   type="text"
                   name="senderAddress"
                   value={formData.senderAddress.city}
                   onChange={handleChange}
-                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid dark:border-semiYankeesBlue border-[#DFE3FA] dark:text-white  text-chineesBlack dark:bg-yankeesBlue w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
 
               <div className="mb-4">
-                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                <label
+                  htmlFor="senderPostcode"
+                  className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                >
                   Post Code
                 </label>
                 <input
+                  id="senderPostcode"
                   type="text"
                   name="postCode"
                   value={formData.senderAddress.postCode}
                   onChange={(e) => handleAddressChange(e, "senderAddress")}
-                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid dark:border-semiYankeesBlue border-[#DFE3FA] dark:bg-yankeesBlue  dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
             </div>
 
             <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              <label
+                htmlFor="senderCountry"
+                className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+              >
                 Country
               </label>
               <input
+                id="senderCountry"
                 type="text"
                 name="senderAddress"
                 value={formData.senderAddress.country}
                 onChange={(e) => handleAddressChange(e, "senderAddress")}
-                className=" border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className=" border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
           </div>
@@ -270,79 +286,103 @@ const EditInvoice: React.FC = () => {
               Bill To
             </h2>
             <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              <label
+                htmlFor="clientsName"
+                className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+              >
                 Client’s Name
               </label>
               <input
+                id="clientsName"
                 type="text"
                 name="clientName"
                 value={formData.clientName}
                 onChange={handleChange}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              <label
+                htmlFor="clientsEmail"
+                className=" dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+              >
                 Client’s Email
               </label>
               <input
+                id="clientsEmail"
                 type="text"
                 name="clientEmail"
                 value={formData.clientEmail}
                 onChange={handleChange}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              <label
+                htmlFor="clientStreet"
+                className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+              >
                 Street Address
               </label>
               <input
+                id="clientStreet"
                 type="text"
                 name="street"
                 value={formData.clientAddress.street}
                 onChange={(e) => handleAddressChange(e, "clientAddress")}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA]  dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className=" sm:flex sm:items-center sm:justify-between  sm:gap-6">
               <div className="flex items-center justify-between gap-[23px]">
                 <div className="mb-4">
-                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                  <label
+                    htmlFor="clientsCity"
+                    className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                  >
                     City
                   </label>
                   <input
+                    id="clientsCity"
                     type="text"
                     name="city"
                     value={formData.clientAddress.city}
                     onChange={(e) => handleAddressChange(e, "clientAddress")}
-                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className="border border-solid border-[#DFE3FA]  dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
 
                 <div className="mb-4">
-                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                  <label
+                    htmlFor="clientsPostcode"
+                    className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                  >
                     Post Code
                   </label>
                   <input
+                    id="clientsPostcode"
                     type="text"
                     name="postCode"
                     value={formData.clientAddress.postCode}
                     onChange={(e) => handleAddressChange(e, "clientAddress")}
-                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className="border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
               </div>
               <div className="mb-4">
-                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                <label
+                  htmlFor="clientsCountry"
+                  className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                >
                   Country
                 </label>
                 <input
+                  id="clientsCountry"
                   type="text"
                   name="country"
                   value={formData.clientAddress.country}
                   onChange={(e) => handleAddressChange(e, "clientAddress")}
-                  className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
             </div>
@@ -350,26 +390,34 @@ const EditInvoice: React.FC = () => {
 
           <div className="sm:flex sm:items-center sm:justify-between  sm:gap-6">
             <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              <label
+                htmlFor="createdAt"
+                className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+              >
                 Invoice Date
               </label>
               <input
+                id="createdAt"
                 type="date"
                 name="createdAt"
                 value={formData.createdAt}
                 onChange={handleChange}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               />
             </div>
             <div className="mb-4">
-              <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+              <label
+                htmlFor="terms"
+                className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+              >
                 Payment Terms
               </label>
               <select
+                id="terms"
                 name="paymentTerms"
                 value={formData.paymentTerms}
                 onChange={handleTermsChange}
-                className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                className="border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
               >
                 {Object.entries(paymentTermsOptions).map(([key, value]) => (
                   <option
@@ -384,14 +432,18 @@ const EditInvoice: React.FC = () => {
             </div>
           </div>
           <div className="mb-4">
-            <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+            <label
+              htmlFor="description"
+              className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+            >
               Project Description
             </label>
             <input
+              id="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+              className="border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
             />
           </div>
 
@@ -405,51 +457,63 @@ const EditInvoice: React.FC = () => {
               className="mb-4 sm:flex sm:items-center sm:justify-between  sm:gap-2"
             >
               <div>
-                <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                <label
+                  htmlFor="name"
+                  className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                >
                   Item Name
                 </label>
                 <input
+                  id="name"
                   type="text"
                   name="name"
                   value={item.name}
                   onChange={(e) =>
                     handleItemChange(index, "name", e.target.value)
                   }
-                  className="border border-solid border-[#DFE3FA] mb-[25px] sm:mb-[8px] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                  className="border border-solid border-[#DFE3FA] mb-[25px] sm:mb-[8px] dark:border-semiYankeesBlue dark:bg-yankeesBlue dark:text-white text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                 />
               </div>
 
               <div className=" flex items-center gap-4 ">
                 <div className="flex flex-col ">
-                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                  <label
+                    htmlFor="quantity"
+                    className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                  >
                     Quantity
                   </label>
                   <input
+                    id="quantity"
                     type="number"
                     name="quantity"
                     value={item.quantity}
                     onChange={(e) =>
                       handleItemChange(index, "quantity", e.target.value)
                     }
-                    className=" border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className=" border border-solid  dark:border-semiYankeesBlue border-[#DFE3FA] dark:text-white dark:bg-yankeesBlue text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                  <label
+                    htmlFor="price"
+                    className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
+                  >
                     Price
                   </label>
                   <input
+                    id="price"
                     type="number"
                     name="price"
                     value={item.price}
                     onChange={(e) =>
                       handleItemChange(index, "price", e.target.value)
                     }
-                    className="border border-solid border-[#DFE3FA] text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className="border border-solid dark:border-semiYankeesBlue border-[#DFE3FA] dark:text-white dark:bg-yankeesBlue text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col items-start gap-[30px]">
-                  <label className="text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
+                  <label className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]">
                     Total
                   </label>
                   <p className="text-gray text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
@@ -466,22 +530,22 @@ const EditInvoice: React.FC = () => {
             </div>
           ))}
           <div
-            className="flex items-center justify-center my-[50px] cursor-pointer"
+            className=" w-full dark:bg-semiYankeesBlue bg-[#F9FAFE] pt-[18px] pb-[15px] rounded-3xl flex items-center justify-center my-[50px] cursor-pointer"
             onClick={handleAddItem}
           >
-            <p className="text-ube text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
+            <p className="text-ube dark:text-lavender text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px]">
               + Add New Item
             </p>
           </div>
         </form>
-        <div className="flex justify-end mt-6 bg-white p-5">
-          <button className="pt-[18px] pr-[26px] pb-[15px] pl-26px bg-[#F9FAFE]">
+        <div className="flex justify-end gap-2 mt-6 bg-white dark:bg-eerieBlack p-5">
+          <button className="pt-[18px] pr-[26px] pb-[15px] pl-[26px] rounded-3xl text-ube dark:text-lavender bg-[#F9FAFE] dark:bg-semiYankeesBlue">
             Cancel
           </button>
           <button
             type="button"
             onClick={handleSave}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm"
+            className="px-4 py-2 bg-violetsBlue text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] text-white rounded-3xl shadow-sm"
           >
             Save Changes
           </button>
