@@ -475,13 +475,13 @@ const EditInvoice: React.FC = () => {
                 />
               </div>
 
-              <div className=" flex items-center gap-4 ">
+              <div className="  w-full flex items-center gap-4 ">
                 <div className="flex flex-col ">
                   <label
                     htmlFor="quantity"
                     className="dark:text-lavender text-ube text-[13px] not-italic font-medium leading-[15px] tracking-[-0.1px]"
                   >
-                    Quantity
+                    Qty.
                   </label>
                   <input
                     id="quantity"
@@ -491,7 +491,7 @@ const EditInvoice: React.FC = () => {
                     onChange={(e) =>
                       handleItemChange(index, "quantity", e.target.value)
                     }
-                    className=" border border-solid  dark:border-semiYankeesBlue border-[#DFE3FA] dark:text-white dark:bg-yankeesBlue text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
+                    className=" border border-solid border-[#DFE3FA] dark:border-semiYankeesBlue  dark:text-white dark:bg-yankeesBlue text-chineesBlack w-full rounded-lg mt-1 text-[15px] not-italic font-bold leading-[15px] tracking-[-0.25px] pt-[18px] pb-[15px] pl-[20px] focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col">
