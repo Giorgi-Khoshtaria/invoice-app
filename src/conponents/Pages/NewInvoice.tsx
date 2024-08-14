@@ -165,21 +165,32 @@ function NewInvoice() {
   };
 
   const handleSaveAsDraft = () => {
+    if (formData.items.length === 0) {
+      alert("At least one item must be added to the invoice.");
+      return;
+    }
+
     if (validateForm()) {
       const draftInvoice = { ...formData, status: "draft" };
-      newInvoice(draftInvoice);
+
+      newInvoice(draftInvoice as Invoice);
       navigate("/");
     } else {
-      alert("Form validation failed,Please fill in all fields");
+      alert("Form validation failed. Please fill in all required fields.");
     }
   };
 
   const handleSaveAndSend = () => {
+    if (formData.items.length === 0) {
+      alert("At least one item must be added to the invoice.");
+      return;
+    }
+
     if (validateForm()) {
       newInvoice(formData);
       navigate("/");
     } else {
-      alert("Form validation failed,Please fill in all fields");
+      alert("Form validation failed. Please fill in all required fields.");
     }
   };
   const formatDate = (dateString: string): string => {
@@ -219,7 +230,7 @@ function NewInvoice() {
     <div className="flex justify-start items-start overflow-x-hidden">
       <div
         onClick={handleNewShow}
-        className="absolute top-[72px] lg:top-0 w-full  flex items-start justify-start bg-black h-full  bg-opacity-50 z-10"
+        className="absolute top-[72px] lg:top-0 lg:left-0 w-full flex items-start justify-start bg-black h-full  bg-opacity-50 z-10"
       ></div>
       <div className=" absolute top-[72px] lg:top-0 w-full max-w-lg dark:bg-eerieBlack bg-white p-6 z-30 rounded-lg  sm:h-full sm:overflow-auto ">
         <a

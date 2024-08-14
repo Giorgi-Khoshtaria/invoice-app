@@ -170,6 +170,11 @@ const EditInvoice: React.FC = () => {
   };
 
   const handleSave = () => {
+    if (formData?.items.length === 0) {
+      alert("At least one item must be added to the invoice.");
+      return;
+    }
+
     if (validateForm()) {
       if (formData) {
         updateInvoice(formData);

@@ -1,4 +1,3 @@
-import React from "react";
 import illustration from "/assets/illustration-empty.svg";
 
 function ClearContent() {
